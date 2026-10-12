@@ -52,7 +52,14 @@ exports.handler = async (event) => {
       return { statusCode: response.status, body: errorBody };
     }
     const data = await response.json();
-    return { statusCode: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }, body: data.output_text };
+    const outputText = data.output_text || data.output
+      ?.flatMap(item => item.content || [])
+      .find(content => content.type === 'output_text')?.text;
+    if (!outputText) {
+      console.error('OpenAI returned no text output', JSON.stringify(data).slice(0, 800));
+      return { statusCode: 502, body: 'OpenAI returned no readable text output' };
+    }
+    return { statusCode: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }, body: outputText };
   } catch (error) {
     return { statusCode: 500, body: error.message || 'Recognition failed' };
   }
