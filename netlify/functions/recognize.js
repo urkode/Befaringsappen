@@ -46,7 +46,11 @@ exports.handler = async (event) => {
         text: { format: { type: 'json_schema', name: 'annotations', strict: true, schema } }
       })
     });
-    if (!response.ok) return { statusCode: response.status, body: await response.text() };
+    if (!response.ok) {
+      const errorBody = await response.text();
+      console.error('OpenAI recognition request failed', response.status, errorBody);
+      return { statusCode: response.status, body: errorBody };
+    }
     const data = await response.json();
     return { statusCode: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }, body: data.output_text };
   } catch (error) {
