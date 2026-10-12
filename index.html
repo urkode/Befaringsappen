@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#14213d" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="fix.css" />
+    <link rel="stylesheet" href="editor.css" />
+    <link rel="stylesheet" href="polish.css" />
+    <link rel="stylesheet" href="finish.css" />
+    <title>Befaringsskisse</title>
+  </head>
+  <body>
+    <main id="app">
+      <section id="startView" class="start-view">
+        <div class="start-actions">
+          <button class="primary-button" id="openCamera"><span>◎</span> Ta bilde</button>
+          <label class="secondary-button" for="imageUpload"><span>▧</span> Last opp bilde</label>
+          <input id="imageUpload" type="file" accept="image/*" hidden />
+        </div>
+      </section>
+
+      <section id="cameraView" class="camera-view hidden">
+        <video id="camera" autoplay playsinline muted></video>
+        <div class="camera-top"><button class="icon-button" id="closeCamera" aria-label="Lukk kamera">×</button><span>Ta bilde</span></div>
+        <div class="camera-bottom"><button id="takePhoto" class="shutter" aria-label="Ta bilde"><i></i></button></div>
+      </section>
+
+      <section id="editorView" class="editor-view hidden">
+        <div id="canvasWrap" class="canvas-wrap">
+          <canvas id="photoCanvas"></canvas><canvas id="drawCanvas"></canvas><div id="textLayer"></div>
+          <div class="editor-top-controls"><button class="floating-button close-button" id="backToStart" aria-label="Ferdig">×</button><button class="floating-button undo-button" id="undo" aria-label="Angre">↶</button></div>
+          <div class="pen-colors" id="penColors" role="group" aria-label="Velg farge"><button class="color selected" data-color="#ef4444" style="--swatch:#ef4444" aria-label="Rød"></button><button class="color" data-color="#f59e0b" style="--swatch:#f59e0b" aria-label="Gul"></button><button class="color" data-color="#22c55e" style="--swatch:#22c55e" aria-label="Grønn"></button><button class="color" data-color="#2563eb" style="--swatch:#2563eb" aria-label="Blå"></button><button class="color" data-color="#ffffff" style="--swatch:#ffffff" aria-label="Hvit"></button></div>
+          <div class="editor-bottom-controls"><button class="floating-button tool-button" id="penTool" aria-label="Tegn med penn">✎</button><button class="floating-button tool-button convert-button" id="recognizeTool" aria-label="Forvandle håndskrift til tekst">T<span>✦</span></button></div>
+        </div>
+      </section>
+
+      <section id="finishView" class="finish-view hidden">
+        <div class="finish-icon">✓</div><h1>Skissen er klar</h1><p>Send den inn eller lagre den pa telefonen.</p>
+        <div class="system-card"><h2>Send til system</h2><label for="orderSelect">Ordre</label><select id="orderSelect"><option value="">Velg ordre</option><option>ORD-1042 - Solsiden 12</option><option>ORD-1043 - Strandgata 8</option><option>ORD-1044 - Fjellveien 3</option></select><label for="imageDescription">Bildebeskrivelse</label><textarea id="imageDescription" rows="3" placeholder="F.eks. Nytt vindu ved inngangsparti"></textarea><button id="sendToSystem" class="primary-button">Send til system</button><p id="sendStatus" class="send-status"></p></div>
+        <div class="start-actions finish-actions"><button id="downloadImage" class="secondary-button">Last ned bilde</button><button id="deleteSketch" class="delete-button">Slett skisse</button></div>
+      </section>
+    </main>
+    <div id="toast" role="status"></div>
+    <script src="app.js"></script><script src="finish.js"></script>
+  </body>
+</html>
