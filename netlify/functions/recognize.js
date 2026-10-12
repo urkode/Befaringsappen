@@ -40,7 +40,7 @@ exports.handler = async (event) => {
         model: 'gpt-4.1-mini',
         store: false,
         input: [{ role: 'user', content: [
-          { type: 'input_text', text: `This is an annotation canvas, ${width} by ${height} pixels. Read ONLY handwritten text or numbers. Return each readable item and its tight pixel bounding box. Do not return arrows, lines, circles, symbols, or printed background. Preserve the exact intended text, including numbers.` },
+          { type: 'input_text', text: `This is a white ${width} by ${height} pixel canvas containing ONLY the user's drawn ink strokes. Return text or digits ONLY when you can directly see clear, deliberate handwritten letter or digit shapes in the ink. Never guess, infer, autocomplete, correct, or invent text. If a mark is unclear, an arrow, a line, a circle, a tick, a dimension line, a symbol, or a drawing, OMIT it. Do not describe the image. An empty items array is always better than a guessed result. For each accepted item, use a tight bounding box around only its ink.` },
           { type: 'input_image', image_url: image, detail: 'high' }
         ] }],
         text: { format: { type: 'json_schema', name: 'annotations', strict: true, schema } }
