@@ -19,25 +19,26 @@
           <label class="primary-button upload-button" for="imageUpload"><span class="upload-icons">&#128247; &#128444;</span> Last opp bilde</label>
           <input id="imageUpload" type="file" accept="image/*" hidden />
         </div>
+        <span class="app-version">v1.1.0</span>
       </section>
 
       <section id="cameraView" class="camera-view hidden">
         <video id="camera" autoplay playsinline muted></video>
-        <div class="camera-top"><button class="icon-button" id="closeCamera" aria-label="Lukk kamera">×</button><span>Ta bilde</span></div>
+        <div class="camera-top"><button class="icon-button" id="closeCamera" aria-label="Lukk kamera">Ã—</button><span>Ta bilde</span></div>
         <div class="camera-bottom"><button id="takePhoto" class="shutter" aria-label="Ta bilde"><i></i></button></div>
       </section>
 
       <section id="editorView" class="editor-view hidden">
         <div id="canvasWrap" class="canvas-wrap">
           <canvas id="photoCanvas"></canvas><canvas id="drawCanvas"></canvas><div id="textLayer"></div>
-          <div class="editor-top-controls"><button class="floating-button close-button" id="backToStart" aria-label="Ferdig">×</button><button class="floating-button undo-button" id="undo" aria-label="Angre">↶</button></div>
-          <div class="pen-colors" id="penColors" role="group" aria-label="Velg farge"><button class="color selected" data-color="#ef4444" style="--swatch:#ef4444" aria-label="Rød"></button><button class="color" data-color="#f59e0b" style="--swatch:#f59e0b" aria-label="Gul"></button><button class="color" data-color="#22c55e" style="--swatch:#22c55e" aria-label="Grønn"></button><button class="color" data-color="#2563eb" style="--swatch:#2563eb" aria-label="Blå"></button><button class="color" data-color="#ffffff" style="--swatch:#ffffff" aria-label="Hvit"></button></div>
-          <div class="editor-bottom-controls"><button class="floating-button tool-button" id="penTool" aria-label="Tegn med penn">✎</button><button class="floating-button tool-button convert-button" id="recognizeTool" aria-label="Forvandle håndskrift til tekst">T<span>✦</span></button></div>
+          <div class="editor-top-controls"><button class="floating-button close-button" id="backToStart" aria-label="Ferdig">Ã—</button><button class="floating-button undo-button" id="undo" aria-label="Angre">â†¶</button></div>
+          <div class="pen-colors" id="penColors" role="group" aria-label="Velg farge"><button class="color selected" data-color="#ef4444" style="--swatch:#ef4444" aria-label="RÃ¸d"></button><button class="color" data-color="#f59e0b" style="--swatch:#f59e0b" aria-label="Gul"></button><button class="color" data-color="#22c55e" style="--swatch:#22c55e" aria-label="GrÃ¸nn"></button><button class="color" data-color="#2563eb" style="--swatch:#2563eb" aria-label="BlÃ¥"></button><button class="color" data-color="#ffffff" style="--swatch:#ffffff" aria-label="Hvit"></button></div>
+          <div class="editor-bottom-controls"><button class="floating-button tool-button" id="penTool" aria-label="Tegn med penn">âœŽ</button><button class="floating-button tool-button convert-button" id="recognizeTool" aria-label="Forvandle hÃ¥ndskrift til tekst">T<span>âœ¦</span></button></div>
         </div>
       </section>
 
       <section id="finishView" class="finish-view hidden">
-        <div class="finish-icon">✓</div><h1>Skissen er klar</h1><p>Send den inn eller lagre den pa telefonen.</p>
+        <div class="finish-icon">âœ“</div><h1>Skissen er klar</h1><p>Send den inn eller lagre den pa telefonen.</p>
         <div class="system-card"><h2>Send til system</h2><label for="orderSelect">Ordre</label><select id="orderSelect"><option value="">Velg ordre</option><option>ORD-1042 - Solsiden 12</option><option>ORD-1043 - Strandgata 8</option><option>ORD-1044 - Fjellveien 3</option></select><label for="imageDescription">Bildebeskrivelse</label><textarea id="imageDescription" rows="3" placeholder="F.eks. Nytt vindu ved inngangsparti"></textarea><button id="sendToSystem" class="primary-button">Send til system</button><p id="sendStatus" class="send-status"></p></div>
         <div class="start-actions finish-actions"><button id="downloadImage" class="secondary-button">Last ned bilde</button><button id="deleteSketch" class="delete-button">Slett skisse</button></div>
       </section>
