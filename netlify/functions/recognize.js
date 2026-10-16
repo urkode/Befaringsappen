@@ -40,7 +40,7 @@ exports.handler = async (event) => {
         model: 'gpt-4.1-mini',
         store: false,
         input: [{ role: 'user', content: [
-          { type: 'input_text', text: `This is a white ${width} by ${height} pixel canvas containing ONLY the user's drawn ink strokes. Return text or digits ONLY when you can directly see clear, deliberate handwritten letter or digit shapes in the ink. Never guess, infer, autocomplete, correct, or invent text. If a mark is unclear, an arrow, a line, a circle, a tick, a dimension line, a symbol, or a drawing, OMIT it. Do not describe the image. An empty items array is always better than a guessed result. For each accepted item, use a tight bounding box around only its ink.` },
+          { type: 'input_text', text: `You are interpreting a technical sketch annotation layer, ${width} by ${height} pixels. Examine the meaning and role of every visible ink mark as a whole. Return an item ONLY for deliberate handwritten words or measurement values that a person intended to read as text. Do NOT return measurement lines, leader lines, arrows, ticks, circles, boxes, underlines, dimension guides, or decorative marks. A straight line is a graphical annotation unless it clearly functions as part of a written multi-character value. Do not infer or invent missing text. Prefer an empty items array when uncertain. For each text item, return a tight box around its handwritten ink only; exclude nearby lines and symbols from the box.` },
           { type: 'input_image', image_url: image, detail: 'high' }
         ] }],
         text: { format: { type: 'json_schema', name: 'annotations', strict: true, schema } }
