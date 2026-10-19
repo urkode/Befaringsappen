@@ -61,6 +61,54 @@ body {
     linear-gradient(to top, #24143a 0%, #24143a 8%, #24143ad9 15%, #24143a85 25%, #24143a00 38%);
 }
 
+/* Tiny white points give the colour field a restrained, living depth. */
+.ambient-stars {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.start-view .ambient-stars,
+.finish-view .ambient-stars { z-index: 2; }
+
+.editor-view .ambient-stars { z-index: 0; }
+
+.ambient-stars::before,
+.ambient-stars::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: .15;
+  box-shadow:
+    8vw 13vh #fff, 22vw 28vh #fff, 42vw 9vh #fff, 63vw 22vh #fff,
+    79vw 13vh #fff, 91vw 37vh #fff, 14vw 62vh #fff, 34vw 76vh #fff,
+    57vw 59vh #fff, 73vw 83vh #fff, 94vw 68vh #fff;
+  animation: star-twinkle 3.8s ease-in-out infinite alternate;
+}
+
+.ambient-stars::after {
+  width: 2px;
+  height: 2px;
+  opacity: .08;
+  box-shadow:
+    16vw 38vh #fff, 29vw 14vh #fff, 51vw 43vh #fff, 68vw 6vh #fff,
+    86vw 54vh #fff, 7vw 86vh #fff, 47vw 88vh #fff, 81vw 91vh #fff;
+  animation-delay: -1.7s;
+}
+
+@keyframes star-twinkle {
+  0% { opacity: .05; transform: scale(.7); }
+  48% { opacity: .46; transform: scale(1.15); }
+  100% { opacity: .12; transform: scale(.85); }
+}
+
 .start-view .brand-studios {
   position: absolute;
   z-index: 3;
@@ -186,12 +234,15 @@ body {
   z-index: 0 !important;
   inset: -46%;
   background:
+    radial-gradient(ellipse at 14% 72%, #2875a8 0 12%, transparent 39%),
     radial-gradient(ellipse at 18% 82%, #12395a 0 14%, transparent 43%),
     radial-gradient(ellipse at 82% 16%, #321a56 0 17%, transparent 44%),
+    radial-gradient(ellipse at 81% 38%, #d44767 0 15%, transparent 44%),
     radial-gradient(ellipse at 70% 62%, #bd3f81 0 17%, transparent 47%),
     radial-gradient(ellipse at 32% 33%, #8d5fc3 0 18%, transparent 48%),
     radial-gradient(ellipse at 52% 53%, #c64f98 0 16%, transparent 46%),
-    linear-gradient(135deg, #0a1a2b 0%, #1c2452 28%, #6e397f 52%, #a23a78 70%, #27163f 100%) !important;
+    radial-gradient(ellipse at 94% 73%, #b85a42 0 10%, transparent 38%),
+    linear-gradient(135deg, #0a1a2b 0%, #1c2452 25%, #6e397f 49%, #b03e78 69%, #32163f 100%) !important;
   filter: blur(31px) saturate(1.35) brightness(.9);
   background-size: 155% 175%;
   animation: rumag-colour-waves 8s ease-in-out infinite;
@@ -553,12 +604,15 @@ body {
   z-index: 0 !important;
   inset: -46% !important;
   background:
+    radial-gradient(ellipse at 14% 72%, #2875a8 0 12%, transparent 39%),
     radial-gradient(ellipse at 18% 82%, #12395a 0 14%, transparent 43%),
     radial-gradient(ellipse at 82% 16%, #321a56 0 17%, transparent 44%),
+    radial-gradient(ellipse at 81% 38%, #d44767 0 15%, transparent 44%),
     radial-gradient(ellipse at 70% 62%, #bd3f81 0 17%, transparent 47%),
     radial-gradient(ellipse at 32% 33%, #8d5fc3 0 18%, transparent 48%),
     radial-gradient(ellipse at 52% 53%, #c64f98 0 16%, transparent 46%),
-    linear-gradient(135deg, #0a1a2b 0%, #1c2452 28%, #6e397f 52%, #a23a78 70%, #27163f 100%) !important;
+    radial-gradient(ellipse at 94% 73%, #b85a42 0 10%, transparent 38%),
+    linear-gradient(135deg, #0a1a2b 0%, #1c2452 25%, #6e397f 49%, #b03e78 69%, #32163f 100%) !important;
   filter: blur(31px) saturate(1.35) brightness(.9) !important;
   background-size: 155% 175% !important;
   animation: rumag-colour-waves 8s ease-in-out infinite;
@@ -582,6 +636,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .start-view,
   .start-view::before,
+  .ambient-stars::before,
+  .ambient-stars::after,
   .image-source-dialog,
   .image-source-card { animation: none; }
 }

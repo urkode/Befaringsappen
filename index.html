@@ -25,6 +25,7 @@
   <body>
     <main id="app">
       <section id="startView" class="start-view">
+        <div class="ambient-stars" aria-hidden="true"></div>
         <div class="start-actions">
           <button id="openImageSource" class="primary-button upload-button" aria-label="Velg bilde"></button>
           <input id="imageUpload" type="file" accept="image/*" hidden />
@@ -38,8 +39,8 @@
             <label for="imageUpload" class="source-choice">Velg bilde</label>
           </div>
         </div>
-        <span class="app-version">v1.7.5</span>
-        <span class="developer-credit">Utvikler: Ulrik Ruud</span>
+        <span class="app-version">v1.7.6</span>
+            <span class="developer-credit">Ulrik Ruud</span>
       </section>
 
       <section id="cameraView" class="camera-view hidden">
@@ -49,6 +50,7 @@
       </section>
 
       <section id="editorView" class="editor-view hidden">
+        <div class="ambient-stars" aria-hidden="true"></div>
         <div id="canvasWrap" class="canvas-wrap">
           <canvas id="photoCanvas"></canvas><canvas id="drawCanvas"></canvas><div id="textLayer"></div>
           <div class="editor-top-controls"><button class="floating-button discard-button" id="discardSketch" aria-label="Forkast skisse">&times;</button><button class="floating-button undo-button" id="undo" aria-label="Angre"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7 4 12l5 5M4 12h10a6 6 0 1 1 0 12"/></svg></button></div>
@@ -61,6 +63,7 @@
       </section>
 
       <section id="finishView" class="finish-view hidden">
+        <div class="ambient-stars" aria-hidden="true"></div>
         <div class="finish-edge-tint" aria-hidden="true"></div>
         <span class="finish-studios" aria-hidden="true">Studios</span>
         <div id="finishImageSourceDialog" class="image-source-dialog finish-image-source-dialog hidden" role="dialog" aria-modal="true" aria-label="Velg bilde">
