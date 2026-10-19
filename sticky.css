@@ -612,30 +612,63 @@ body {
 
 /* Keep the moving colour field inside the visible home-screen viewport. */
 .start-view::before {
-  display: block !important;
-  z-index: 0 !important;
-  inset: -22% !important;
-  opacity: .78;
-  background:
-    radial-gradient(ellipse 47% 35% at 38% 50%, #257fa4 0%, #257fa4c2 22%, transparent 72%),
-    radial-gradient(ellipse 47% 35% at 62% 50%, #8c263e 0%, #8c263ec2 22%, transparent 72%),
-    radial-gradient(ellipse 45% 30% at 50% 50%, #741251 0%, #741251bb 26%, transparent 75%) !important;
-  background-size: 155% 155% !important;
-  filter: blur(25px) saturate(1.08) brightness(.86) !important;
-  animation: rumag-home-glow 7s ease-in-out infinite !important;
+  display: none !important;
 }
 
-@keyframes rumag-home-glow {
-  0% { transform: scale(1.06) translate3d(-8%, -7%, 0); background-position: 4% 12%; }
-  25% { transform: scale(1.14) translate3d(7%, -4%, 0); background-position: 88% 22%; }
-  52% { transform: scale(1.09) translate3d(8%, 7%, 0); background-position: 72% 91%; }
-  76% { transform: scale(1.15) translate3d(-7%, 6%, 0); background-position: 12% 76%; }
-  100% { transform: scale(1.06) translate3d(-8%, -7%, 0); background-position: 4% 12%; }
+/* Two soft logo-colour lights orbit each other behind the fixed frosted edges. */
+.start-view .colour-orbits {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.start-view .colour-orbits::before,
+.start-view .colour-orbits::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(85vw, 560px);
+  height: min(46vh, 410px);
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: .68;
+  will-change: transform;
+}
+
+.start-view .colour-orbits::before {
+  background: #257fa4;
+  animation: blue-orbit 18s linear infinite;
+}
+
+.start-view .colour-orbits::after {
+  background: #8c263e;
+  animation: pink-orbit 18s linear infinite;
+}
+
+@keyframes blue-orbit {
+  0% { transform: translate(-104%, -50%); }
+  25% { transform: translate(-50%, -104%); }
+  50% { transform: translate(4%, -50%); }
+  75% { transform: translate(-50%, 4%); }
+  100% { transform: translate(-104%, -50%); }
+}
+
+@keyframes pink-orbit {
+  0% { transform: translate(4%, -50%); }
+  25% { transform: translate(-50%, 4%); }
+  50% { transform: translate(-104%, -50%); }
+  75% { transform: translate(-50%, -104%); }
+  100% { transform: translate(4%, -50%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .start-view,
   .start-view::before,
+  .start-view .colour-orbits::before,
+  .start-view .colour-orbits::after,
   .ambient-stars i,
   .image-source-dialog,
   .image-source-card { animation: none; }
