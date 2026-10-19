@@ -324,7 +324,7 @@ body {
   outline: none;
   background: #ffffff14;
   color: #fff;
-  font: 800 .94rem/1 system-ui, sans-serif;
+  font: 800 16px/1 system-ui, sans-serif;
   backdrop-filter: blur(14px) saturate(1.14);
   -webkit-backdrop-filter: blur(14px) saturate(1.14);
 }
@@ -382,7 +382,7 @@ body {
   outline: none;
   background: #ffffff14;
   color: #fff;
-  font: 700 .8rem/1 system-ui, sans-serif;
+  font: 700 16px/1 system-ui, sans-serif;
   letter-spacing: .01em;
   backdrop-filter: blur(13px) saturate(1.15);
   -webkit-backdrop-filter: blur(13px) saturate(1.15);
@@ -439,6 +439,12 @@ body {
 
 .finish-view .finish-actions .save-button { color: #ffffffb8; }
 .finish-view .finish-actions .share-button { color: #fff !important; }
+
+/* iOS Safari zooms the whole page when a focused input uses text below 16px. */
+@supports (-webkit-touch-callout: none) {
+  .project-title,
+  .sketch-name { font-size: 16px; }
+}
 
 @keyframes source-dialog-in {
   from { opacity: 0; }
