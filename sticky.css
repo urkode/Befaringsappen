@@ -166,8 +166,30 @@ body {
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
 }
 
+.editor-view::before,
+.finish-view::before {
+  content: "";
+  position: absolute;
+  z-index: 0 !important;
+  inset: -46%;
+  background:
+    radial-gradient(ellipse at 16% 77%, #08717a 0 11%, transparent 41%),
+    radial-gradient(ellipse at 83% 25%, #8a3a27 0 12%, transparent 43%),
+    radial-gradient(ellipse at 79% 69%, #7d176b 0 16%, transparent 48%),
+    radial-gradient(ellipse at 26% 20%, #493088 0 18%, transparent 49%),
+    radial-gradient(ellipse at 53% 50%, #65125a 0 13%, transparent 47%),
+    linear-gradient(135deg, #07525d 0%, #2b1d58 27%, #68145b 55%, #913723 77%, #3a205b 100%) !important;
+  filter: blur(31px) saturate(1.22) brightness(.8);
+  animation: rumag-colour-drift 7s cubic-bezier(.55, .05, .2, .98) infinite alternate;
+  will-change: transform;
+}
+
 .editor-view .canvas-wrap {
-  background: transparent !important;
+  position: relative;
+  z-index: 1;
+  background:
+    linear-gradient(to bottom, #24143a 0%, #24143a 8%, #24143ad9 15%, #24143a85 24%, #24143a00 37%),
+    linear-gradient(to top, #24143a 0%, #24143a 8%, #24143ad9 15%, #24143a85 25%, #24143a00 38%) !important;
 }
 
 .editor-view .floating-button,
@@ -175,6 +197,25 @@ body {
   background: #171126ad !important;
   backdrop-filter: blur(16px) saturate(1.2);
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
+}
+
+.finish-view::after {
+  z-index: 1 !important;
+}
+
+.finish-view .finish-edge-tint {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, #24143a 0%, #24143a 8%, #24143ad9 15%, #24143a85 24%, #24143a00 37%),
+    linear-gradient(to top, #24143a 0%, #24143a 8%, #24143ad9 15%, #24143a85 25%, #24143a00 38%);
+}
+
+.finish-view > :not(.finish-edge-tint) {
+  position: relative;
+  z-index: 3;
 }
 
 @keyframes source-dialog-in {
