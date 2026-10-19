@@ -67,14 +67,14 @@ body {
   top: calc(50% + min(43.6vw, 238px) + 12px);
   left: 50%;
   transform: translateX(-50%);
-  color: #ffffffb8;
+  color: #ffffff45;
   font-family: ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
-  font-size: clamp(.84rem, 3.6vw, 1.08rem);
+  font-size: clamp(1rem, 4.4vw, 1.3rem);
   font-weight: 850;
   letter-spacing: .16em;
   line-height: 1;
   text-transform: uppercase;
-  text-shadow: 0 2px 14px #0008;
+  text-shadow: 0 2px 14px #0005;
 }
 
 /* The whole start screen is the upload trigger; no visible button is needed. */
