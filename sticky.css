@@ -19,3 +19,12 @@ body {
   overflow: hidden;
   overscroll-behavior: none;
 }
+
+/* Leave the Dynamic Island area as part of the RUMAG background, not as empty space. */
+.start-view {
+  padding-bottom: calc(76px + env(safe-area-inset-bottom)) !important;
+}
+
+.start-view::after {
+  background-position: center 40% !important;
+}
