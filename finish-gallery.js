@@ -51,6 +51,7 @@ async function removeSketchRecord(id) {
 function renderGallery() {
   const grid = $('#sketchGrid');
   if (!grid) return;
+  $('#shareImage').textContent = savedSketches.length === 1 ? 'Lagre skisse' : 'Lagre skisser';
   grid.replaceChildren();
 
   savedSketches.forEach(sketch => {
@@ -107,8 +108,7 @@ function renderGallery() {
   addCard.setAttribute('aria-label', 'Legg til ny skisse');
   addCard.innerHTML = '<span>+</span><small>Ny skisse</small>';
   addCard.onclick = () => {
-    show('startView');
-    $('#openImageSource').click();
+    $('#finishImageSourceDialog').classList.remove('hidden', 'is-closing');
   };
   grid.append(addCard);
 }
@@ -170,5 +170,35 @@ const projectTitleInput = $('#projectTitle');
 projectTitleInput.value = projectTitle();
 projectTitleInput.addEventListener('input', () => {
   localStorage.setItem(projectTitleStorageKey, projectTitleInput.value);
+});
+const finishImageSourceDialog = $('#finishImageSourceDialog');
+function closeFinishImageSource() {
+  finishImageSourceDialog.classList.add('is-closing');
+  const done = event => {
+    if (event.target !== finishImageSourceDialog) return;
+    finishImageSourceDialog.classList.add('hidden');
+    finishImageSourceDialog.classList.remove('is-closing');
+    finishImageSourceDialog.removeEventListener('animationend', done);
+  };
+  finishImageSourceDialog.addEventListener('animationend', done);
+}
+finishImageSourceDialog.addEventListener('click', event => {
+  if (event.target === finishImageSourceDialog) closeFinishImageSource();
+});
+finishImageSourceDialog.querySelectorAll('.source-choice').forEach(choice => {
+  choice.addEventListener('click', closeFinishImageSource);
+});
+function hideStartImageSource() {
+  const dialog = $('#imageSourceDialog');
+  dialog.classList.add('hidden');
+  dialog.classList.remove('is-closing');
+}
+['imageUpload', 'cameraUpload'].forEach(id => {
+  $(`#${id}`).onchange = event => {
+    const file = event.target.files[0];
+    hideStartImageSource();
+    if (file) loadImage(URL.createObjectURL(file));
+    event.target.value = '';
+  };
 });
 loadSavedSketches();
