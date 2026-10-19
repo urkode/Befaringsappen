@@ -1,12 +1,12 @@
 /* Persistent, on-device gallery for completed sketches. */
 const galleryDatabase = 'befaringsskisse-gallery';
 const galleryStore = 'sketches';
-const projectTitleStorageKey = 'befaringsskisse-project-title';
 let savedSketches = [];
 let editingSketchId = null;
+let activeProjectTitle = '';
 
 function projectTitle() {
-  return (localStorage.getItem(projectTitleStorageKey) || '').trim();
+  return activeProjectTitle.trim();
 }
 
 function openGalleryDatabase() {
@@ -42,11 +42,12 @@ function sketchFileName(sketch, extension = 'pdf') {
 }
 
 async function saveSketchRecord(sketch) {
-  await galleryRequest('readwrite', store => store.put(sketch));
+  /* Sketches are deliberately session-only: do not persist images in the browser. */
+  return sketch;
 }
 
 async function removeSketchRecord(id) {
-  await galleryRequest('readwrite', store => store.delete(id));
+  return id;
 }
 
 function snapshotEditorState() {
@@ -213,12 +214,8 @@ function renderGallery() {
 }
 
 async function loadSavedSketches() {
-  try {
-    const records = await galleryRequest('readonly', store => store.getAll());
-    savedSketches = records.sort((a, b) => b.createdAt - a.createdAt);
-  } catch (_) {
-    savedSketches = [];
-  }
+  savedSketches = [];
+  if ('indexedDB' in window) indexedDB.deleteDatabase(galleryDatabase);
   renderGallery();
 }
 
@@ -283,10 +280,23 @@ $('#backToStart').onclick = async () => {
 $('#shareImage').onclick = shareSavedSketches;
 $('#downloadImage').onclick = () => {};
 const projectTitleInput = $('#projectTitle');
-projectTitleInput.value = projectTitle();
 projectTitleInput.addEventListener('input', () => {
-  localStorage.setItem(projectTitleStorageKey, projectTitleInput.value);
+  activeProjectTitle = projectTitleInput.value;
 });
+window.resetSketchSession = () => {
+  savedSketches = [];
+  editingSketchId = null;
+  activeProjectTitle = '';
+  projectTitleInput.value = '';
+  finishedBlob = null;
+  strokes = [];
+  erasedRegions = [];
+  textLayer.replaceChildren();
+  photo.width = 0;
+  draw.width = 0;
+  renderGallery();
+  if ('indexedDB' in window) indexedDB.deleteDatabase(galleryDatabase);
+};
 const finishImageSourceDialog = $('#finishImageSourceDialog');
 function closeFinishImageSource() {
   finishImageSourceDialog.classList.add('is-closing');
