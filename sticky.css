@@ -632,44 +632,44 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(94vw, 630px);
-  height: min(54vh, 470px);
+  width: min(128vw, 760px);
+  height: min(64vh, 560px);
   border-radius: 50%;
-  filter: blur(52px);
-  opacity: .58;
+  filter: blur(42px);
+  opacity: .82;
   will-change: transform;
 }
 
 .start-view .colour-orbits::before {
   background:
-    radial-gradient(ellipse at 48% 52%, #257fa4d4 0%, #257fa47d 34%, transparent 73%),
-    radial-gradient(ellipse at 28% 68%, #257fa45c 0%, transparent 47%),
-    radial-gradient(ellipse at 73% 31%, #257fa443 0%, transparent 43%);
-  animation: blue-pair-orbit 18s ease-in-out infinite;
+    radial-gradient(ellipse at 48% 52%, #257fa4e8 0%, #257fa4a5 40%, transparent 78%),
+    radial-gradient(ellipse at 28% 68%, #257fa47a 0%, transparent 53%),
+    radial-gradient(ellipse at 73% 31%, #257fa461 0%, transparent 50%);
+  animation: blue-pair-orbit 12s ease-in-out infinite;
 }
 
 .start-view .colour-orbits::after {
   background:
-    radial-gradient(ellipse at 52% 48%, #8c263ed4 0%, #8c263e7d 34%, transparent 73%),
-    radial-gradient(ellipse at 72% 67%, #8c263e5c 0%, transparent 47%),
-    radial-gradient(ellipse at 26% 32%, #8c263e43 0%, transparent 43%);
-  animation: pink-pair-orbit 18s ease-in-out infinite;
+    radial-gradient(ellipse at 52% 48%, #8c263ee8 0%, #8c263ea5 40%, transparent 78%),
+    radial-gradient(ellipse at 72% 67%, #8c263e7a 0%, transparent 53%),
+    radial-gradient(ellipse at 26% 32%, #8c263e61 0%, transparent 50%);
+  animation: pink-pair-orbit 12s ease-in-out infinite;
 }
 
 @keyframes blue-pair-orbit {
-  0% { transform: translate(-60%, -54%); }
-  25% { transform: translate(-54%, -66%); }
-  50% { transform: translate(-42%, -60%); }
-  75% { transform: translate(-48%, -42%); }
-  100% { transform: translate(-60%, -54%); }
+  0% { transform: translate(-82%, -58%); }
+  25% { transform: translate(-55%, -89%); }
+  50% { transform: translate(-18%, -62%); }
+  75% { transform: translate(-47%, -23%); }
+  100% { transform: translate(-82%, -58%); }
 }
 
 @keyframes pink-pair-orbit {
-  0% { transform: translate(-40%, -46%); }
-  25% { transform: translate(-34%, -58%); }
-  50% { transform: translate(-22%, -52%); }
-  75% { transform: translate(-28%, -34%); }
-  100% { transform: translate(-40%, -46%); }
+  0% { transform: translate(-62%, -50%); }
+  25% { transform: translate(-35%, -81%); }
+  50% { transform: translate(2%, -54%); }
+  75% { transform: translate(-27%, -15%); }
+  100% { transform: translate(-62%, -50%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
