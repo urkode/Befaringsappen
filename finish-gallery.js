@@ -130,18 +130,14 @@ function openPreparedSketch(sketch, prepared) {
 }
 
 async function smoothlyOpenSketch(card, sketch) {
-  if (card.classList.contains('is-opening')) return;
+  if (card.dataset.opening === 'true') return;
+  card.dataset.opening = 'true';
   editingSketchId = sketch.id;
-  const prepared = prepareSketchForEditor(sketch);
-  card.classList.add('is-opening');
   try {
-    const [ready] = await Promise.all([
-      prepared,
-      new Promise(resolve => setTimeout(resolve, 340))
-    ]);
+    const ready = await prepareSketchForEditor(sketch);
     openPreparedSketch(sketch, ready);
   } catch (_) {
-    card.classList.remove('is-opening');
+    delete card.dataset.opening;
     editingSketchId = null;
     toast('Kunne ikke åpne skissen igjen.');
   }
