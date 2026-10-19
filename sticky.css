@@ -144,10 +144,37 @@ body {
   background: transparent;
   color: #fff;
   font: 800 1rem/1.2 inherit;
+  cursor: pointer;
 }
 
 .source-choice + .source-choice {
   border-top: 1px solid #ffffff20;
+}
+
+/* Carry the living RUMAG field through the dark editor and finish views. */
+.editor-view,
+.finish-view {
+  isolation: isolate;
+  overflow: hidden !important;
+  background:
+    radial-gradient(ellipse at 8% 82%, #07535c 0%, transparent 49%),
+    radial-gradient(ellipse at 87% 27%, #652a28 0%, transparent 50%),
+    radial-gradient(ellipse at 78% 76%, #55124e 0%, transparent 53%),
+    radial-gradient(ellipse at 22% 18%, #2f2052 0%, transparent 54%),
+    linear-gradient(145deg, #07191d 0%, #1c1230 43%, #360f35 70%, #1f1828 100%) !important;
+  background-size: 150% 150% !important;
+  animation: rumag-base-shift 9s ease-in-out infinite alternate;
+}
+
+.editor-view .canvas-wrap {
+  background: transparent !important;
+}
+
+.editor-view .floating-button,
+.editor-view .pen-colors {
+  background: #171126ad !important;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
 }
 
 @keyframes source-dialog-in {
