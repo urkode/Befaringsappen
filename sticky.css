@@ -316,7 +316,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 5;
-  padding: 2px 0 12px;
+  padding: 46px 0 12px;
 }
 
 .project-title {
@@ -443,7 +443,10 @@ body {
 }
 
 .finish-view .finish-actions .save-button { color: #ffffffb8; }
-.finish-view .finish-actions .share-button { color: #fff !important; }
+.finish-view .finish-actions .share-button {
+  color: #fff !important;
+  box-shadow: none !important;
+}
 
 /* iOS Safari zooms the whole page when a focused input uses text below 16px. */
 @supports (-webkit-touch-callout: none) {
