@@ -15,16 +15,19 @@
     <link rel="stylesheet" href="polish.css" />
     <link rel="stylesheet" href="finish.css" />
     <link rel="stylesheet" href="icons.css" />
+    <link rel="stylesheet" href="brand.css" />
     <title>Befaringsskisse</title>
   </head>
   <body>
     <main id="app">
       <section id="startView" class="start-view">
+        <div class="rumag-brand"><img src="rumag-logo-hvit.svg" alt="RUMAG" /><span>Befaringsskisse</span></div>
         <div class="start-actions">
+          <p class="start-copy">Dokumenter befaringen direkte på bildet.</p>
           <label class="primary-button upload-button" for="imageUpload"><span class="upload-icons">&#128247; &#128444;</span> Last opp bilde</label>
           <input id="imageUpload" type="file" accept="image/*" hidden />
         </div>
-        <span class="app-version">v1.1.10</span>
+        <span class="app-version">v1.2.0</span>
       </section>
 
       <section id="cameraView" class="camera-view hidden">
@@ -43,9 +46,10 @@
       </section>
 
       <section id="finishView" class="finish-view hidden">
-        <div class="finish-icon">✓</div><h1>Skissen er klar</h1><p>Send den inn eller lagre den pa telefonen.</p>
-        <div class="system-card"><h2>Send til system</h2><label for="orderSelect">Ordre</label><select id="orderSelect"><option value="">Velg ordre</option><option>ORD-1042 - Solsiden 12</option><option>ORD-1043 - Strandgata 8</option><option>ORD-1044 - Fjellveien 3</option></select><label for="imageDescription">Bildebeskrivelse</label><textarea id="imageDescription" rows="3" placeholder="F.eks. Nytt vindu ved inngangsparti"></textarea><button id="sendToSystem" class="primary-button">Send til system</button><p id="sendStatus" class="send-status"></p></div>
-        <div class="start-actions finish-actions"><button id="downloadImage" class="secondary-button">Last ned bilde</button><button id="deleteSketch" class="delete-button">Slett skisse</button></div>
+        <div class="finish-brand"><img src="rumag-logo-hvit.svg" alt="RUMAG" /></div>
+        <div class="finish-icon">✓</div><h1>Skissen er klar</h1><p>Del den med Outlook, Teams eller en annen app – eller lagre den for senere.</p>
+        <div class="finish-actions"><button id="shareImage" class="primary-button share-button">Del skisse</button><button id="downloadImage" class="secondary-button save-button">Lagre skisse</button></div>
+        <button id="deleteSketch" class="delete-button">Slett skisse</button>
       </section>
     </main>
     <div id="toast" role="status"></div>
