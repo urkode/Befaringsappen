@@ -131,6 +131,8 @@ body {
   -webkit-backdrop-filter: blur(22px) saturate(1.2);
   box-shadow: 0 22px 56px #000a;
   animation: source-card-in .34s ease-out both;
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 .source-choice {
@@ -154,7 +156,7 @@ body {
 }
 
 @keyframes source-card-in {
-  0% { opacity: 0; transform: translateY(24px) scale(.42); }
+  0% { opacity: .68; transform: translateY(24px) scale(.42) translateZ(0); }
   56% { opacity: 1; transform: translateY(-2px) scale(1.1); }
   76% { transform: translateY(1px) scale(.975); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
