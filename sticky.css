@@ -35,6 +35,7 @@ body {
   min-height: 100% !important;
   padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
   background:
+    linear-gradient(to bottom, #24143a 0%, #24143a00 15%, #24143a00 72%, #24143a 100%),
     radial-gradient(ellipse at 8% 82%, #07535c 0%, transparent 49%),
     radial-gradient(ellipse at 87% 27%, #652a28 0%, transparent 50%),
     radial-gradient(ellipse at 78% 76%, #55124e 0%, transparent 53%),
@@ -44,7 +45,6 @@ body {
   background-color: #24143a !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
 }
-
 .start-view::after {
   background-position: center 50% !important;
   z-index: 1 !important;
