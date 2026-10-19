@@ -236,6 +236,138 @@ body {
   z-index: 3;
 }
 
+/* Finished sketches live in a fixed gallery: only the grid scrolls, never the RUMAG field. */
+.finish-view {
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100% !important;
+  padding: calc(18px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom)) !important;
+  gap: 14px;
+  text-align: left !important;
+  animation: none !important;
+}
+
+.finish-view::before {
+  animation: none !important;
+  transform: scale(1.22) translate3d(-5%, 3%, 0) !important;
+}
+
+.finish-view .finish-brand,
+.finish-view .finish-icon,
+.finish-view h1,
+.finish-view p,
+.finish-view .delete-button {
+  display: none !important;
+}
+
+.finish-gallery-shell {
+  position: relative;
+  z-index: 3;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 2px 2px 10px;
+  scrollbar-width: none;
+}
+
+.finish-gallery-shell::-webkit-scrollbar { display: none; }
+
+.sketch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 12px;
+  padding-bottom: 8px;
+}
+
+.sketch-card { min-width: 0; }
+
+.sketch-preview {
+  position: relative;
+  aspect-ratio: .78;
+  overflow: hidden;
+  border: 1px solid #ffffff35;
+  border-radius: 17px;
+  background: #1610267d;
+  box-shadow: 0 12px 28px #0005;
+  backdrop-filter: blur(13px) saturate(1.14);
+  -webkit-backdrop-filter: blur(13px) saturate(1.14);
+}
+
+.sketch-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sketch-remove {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0 0 3px;
+  border: 1px solid #ffffff4d;
+  border-radius: 50%;
+  background: #160d2578;
+  color: #fff;
+  font: 500 1.35rem/1 system-ui, sans-serif;
+  box-shadow: 0 3px 10px #0005;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.sketch-name {
+  width: 100%;
+  height: 36px;
+  margin-top: 7px;
+  padding: 0 10px;
+  border: 1px solid #ffffff36;
+  border-radius: 10px;
+  outline: none;
+  background: #ffffff14;
+  color: #fff;
+  font: 700 .8rem/1 system-ui, sans-serif;
+  letter-spacing: .01em;
+  backdrop-filter: blur(13px) saturate(1.15);
+  -webkit-backdrop-filter: blur(13px) saturate(1.15);
+}
+
+.sketch-name::placeholder { color: #ffffff8a; }
+.sketch-name:focus { border-color: #ffffff8a; background: #ffffff20; }
+
+.finish-view .finish-actions {
+  position: relative;
+  z-index: 3;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  flex: 0 0 auto;
+  width: 100% !important;
+  margin: 0 !important;
+  gap: 10px;
+}
+
+.finish-view .finish-actions button {
+  min-height: 52px;
+  margin: 0 !important;
+  padding: 10px 8px;
+  border: 1px solid #ffffff42;
+  border-radius: 15px;
+  background: #1711268f !important;
+  color: #fff;
+  font: 800 .86rem/1.1 system-ui, sans-serif;
+  box-shadow: 0 10px 24px #0004;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+}
+
+.finish-view .finish-actions .save-button { color: #ffffffb8; }
+
 @keyframes source-dialog-in {
   from { opacity: 0; }
   to { opacity: 1; }

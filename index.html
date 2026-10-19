@@ -36,7 +36,7 @@
             <label for="imageUpload" class="source-choice">Velg bilde</label>
           </div>
         </div>
-        <span class="app-version">v1.4.3</span>
+        <span class="app-version">v1.5.0</span>
       </section>
 
       <section id="cameraView" class="camera-view hidden">
@@ -56,14 +56,17 @@
 
       <section id="finishView" class="finish-view hidden">
         <div class="finish-edge-tint" aria-hidden="true"></div>
+        <div class="finish-gallery-shell" aria-label="Ferdige skisser">
+          <div id="sketchGrid" class="sketch-grid"></div>
+        </div>
         <div class="finish-brand"><img src="rumag-logo-hvit.svg" alt="RUMAG" /></div>
         <div class="finish-icon">✓</div><h1>Skissen er klar</h1><p>Del den med Outlook, Teams eller en annen app – eller lagre den for senere.</p>
-        <div class="finish-actions"><button id="shareImage" class="primary-button share-button">Del skisse</button><button id="downloadImage" class="secondary-button save-button">Lagre skisse</button></div>
+        <div class="finish-actions"><button id="shareImage" class="primary-button share-button">Lagre skisse</button><button id="downloadImage" class="secondary-button save-button">Send på mail</button></div>
         <button id="deleteSketch" class="delete-button">Slett skisse</button>
       </section>
     </main>
     <div id="toast" role="status"></div>
-    <script src="app.js"></script><script src="finish.js"></script><script src="editor-flow.js"></script>
+    <script src="app.js"></script><script src="finish.js"></script><script src="editor-flow.js"></script><script src="finish-gallery.js"></script>
   </body>
 </html>
 
