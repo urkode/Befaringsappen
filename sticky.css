@@ -36,9 +36,9 @@ body {
   min-height: 100% !important;
   padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
   background:
-    radial-gradient(ellipse 58% 34% at 35% 51%, #257fa4 0%, #257fa4e6 18%, transparent 66%),
-    radial-gradient(ellipse 58% 34% at 65% 49%, #8c263e 0%, #8c263ee6 18%, transparent 66%),
-    radial-gradient(ellipse 52% 28% at 50% 50%, #741251 0%, #741251d9 22%, transparent 72%),
+    radial-gradient(ellipse 58% 34% at 35% 51%, #257fa4 0%, #257fa4ae 18%, transparent 66%),
+    radial-gradient(ellipse 58% 34% at 65% 49%, #8c263e 0%, #8c263eae 18%, transparent 66%),
+    radial-gradient(ellipse 52% 28% at 50% 50%, #741251 0%, #741251b8 22%, transparent 72%),
     linear-gradient(to bottom, #2a173d 0%, #2a173d 18%, #41204d 36%, #5c255e 50%, #41204d 64%, #2a173d 82%, #2a173d 100%) !important;
   background-size: 100% 100% !important;
   background-color: #2a173d !important;
@@ -48,11 +48,6 @@ body {
   background-position: center 50% !important;
   background-size: min(55vw, 300px) auto !important;
   z-index: 2 !important;
-}
-
-/* The home screen is intentionally drawn inside the actual app viewport. */
-.start-view::before {
-  display: none !important;
 }
 
 /* A glass-like transition makes the iOS system tint feel intentional. */
@@ -617,6 +612,27 @@ body {
   0% { background-position: 0% 0%; }
   50% { background-position: 92% 55%; }
   100% { background-position: 28% 100%; }
+}
+
+/* Keep the moving colour field inside the visible home-screen viewport. */
+.start-view::before {
+  display: block !important;
+  z-index: 0 !important;
+  inset: 0 !important;
+  opacity: .58;
+  background:
+    radial-gradient(ellipse 46% 29% at 35% 50%, #257fa4b8 0%, transparent 70%),
+    radial-gradient(ellipse 46% 29% at 65% 51%, #8c263eb8 0%, transparent 70%),
+    radial-gradient(ellipse 43% 25% at 50% 50%, #741251a8 0%, transparent 73%) !important;
+  background-size: 112% 112% !important;
+  filter: blur(25px) saturate(1.04) !important;
+  animation: rumag-home-glow 9s ease-in-out infinite alternate !important;
+}
+
+@keyframes rumag-home-glow {
+  0% { transform: scale(1.02) translate3d(-1.5%, -1%, 0); background-position: 40% 48%; }
+  48% { transform: scale(1.07) translate3d(1.5%, 1%, 0); background-position: 58% 53%; }
+  100% { transform: scale(1.03) translate3d(-.5%, 1.5%, 0); background-position: 47% 56%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
