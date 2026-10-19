@@ -622,6 +622,9 @@ body {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
+  transform-origin: center;
+  animation: colour-pair-orbit 18s linear infinite;
+  will-change: transform;
 }
 
 .start-view .colour-orbits::before,
@@ -643,7 +646,7 @@ body {
     radial-gradient(ellipse at 48% 52%, #257fa4d4 0%, #257fa47d 34%, transparent 73%),
     radial-gradient(ellipse at 28% 68%, #257fa45c 0%, transparent 47%),
     radial-gradient(ellipse at 73% 31%, #257fa443 0%, transparent 43%);
-  animation: blue-orbit 18s linear infinite;
+  transform: translate(-60%, -54%);
 }
 
 .start-view .colour-orbits::after {
@@ -651,23 +654,13 @@ body {
     radial-gradient(ellipse at 52% 48%, #8c263ed4 0%, #8c263e7d 34%, transparent 73%),
     radial-gradient(ellipse at 72% 67%, #8c263e5c 0%, transparent 47%),
     radial-gradient(ellipse at 26% 32%, #8c263e43 0%, transparent 43%);
-  animation: pink-orbit 18s linear infinite;
+  transform: translate(-40%, -46%);
 }
 
-@keyframes blue-orbit {
-  0% { transform: translate(-104%, -50%); }
-  25% { transform: translate(-50%, -104%); }
-  50% { transform: translate(4%, -50%); }
-  75% { transform: translate(-50%, 4%); }
-  100% { transform: translate(-104%, -50%); }
-}
-
-@keyframes pink-orbit {
-  0% { transform: translate(4%, -50%); }
-  25% { transform: translate(-50%, 4%); }
-  50% { transform: translate(-104%, -50%); }
-  75% { transform: translate(-50%, -104%); }
-  100% { transform: translate(4%, -50%); }
+@keyframes colour-pair-orbit {
+  0% { transform: rotate(0deg) scale(1.03); }
+  50% { transform: rotate(180deg) scale(1.07); }
+  100% { transform: rotate(360deg) scale(1.03); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -675,6 +668,7 @@ body {
   .start-view::before,
   .start-view .colour-orbits::before,
   .start-view .colour-orbits::after,
+  .start-view .colour-orbits,
   .ambient-stars i,
   .image-source-dialog,
   .image-source-card { animation: none; }
