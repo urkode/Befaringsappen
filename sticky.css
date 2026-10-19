@@ -14,10 +14,11 @@ body {
   inset: 0;
   background-color: #30305e;
   background-image:
-    radial-gradient(ellipse at 28% 80%, #257fa4 0%, transparent 50%),
-    radial-gradient(ellipse at 68% 31%, #8c263e 0%, transparent 52%),
-    radial-gradient(ellipse at 74% 72%, #30305e 0%, transparent 52%),
-    linear-gradient(135deg, #2a173d 0%, #2a173d 28%, #741251 63%, #30305e 100%);
+    radial-gradient(ellipse at 43% 73%, #257fa4 0%, transparent 47%),
+    radial-gradient(ellipse at 59% 43%, #8c263e 0%, transparent 48%),
+    radial-gradient(ellipse at 53% 54%, #741251 0%, transparent 45%),
+    radial-gradient(ellipse at 76% 70%, #30305e 0%, transparent 48%),
+    linear-gradient(135deg, #101421 0%, #29163d 38%, #54104e 66%, #252850 100%);
 }
 
 #app {
@@ -36,10 +37,11 @@ body {
   min-height: 100% !important;
   padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
   background:
-    radial-gradient(ellipse at 28% 80%, #257fa4 0%, transparent 54%),
-    radial-gradient(ellipse at 68% 31%, #8c263e 0%, transparent 55%),
-    radial-gradient(ellipse at 74% 72%, #30305e 0%, transparent 55%),
-    linear-gradient(135deg, #2a173d 0%, #2a173d 28%, #741251 63%, #30305e 100%) !important;
+    radial-gradient(ellipse at 43% 73%, #257fa4 0%, transparent 51%),
+    radial-gradient(ellipse at 59% 43%, #8c263e 0%, transparent 52%),
+    radial-gradient(ellipse at 53% 54%, #741251 0%, transparent 49%),
+    radial-gradient(ellipse at 76% 70%, #30305e 0%, transparent 51%),
+    linear-gradient(135deg, #101421 0%, #29163d 38%, #54104e 66%, #252850 100%) !important;
   background-size: 150% 150% !important;
   background-color: #30305e !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
@@ -210,10 +212,11 @@ body {
   isolation: isolate;
   overflow: hidden !important;
   background:
-    radial-gradient(ellipse at 28% 80%, #257fa4 0%, transparent 54%),
-    radial-gradient(ellipse at 68% 31%, #8c263e 0%, transparent 55%),
-    radial-gradient(ellipse at 74% 72%, #30305e 0%, transparent 55%),
-    linear-gradient(135deg, #2a173d 0%, #2a173d 28%, #741251 63%, #30305e 100%) !important;
+    radial-gradient(ellipse at 43% 73%, #257fa4 0%, transparent 51%),
+    radial-gradient(ellipse at 59% 43%, #8c263e 0%, transparent 52%),
+    radial-gradient(ellipse at 53% 54%, #741251 0%, transparent 49%),
+    radial-gradient(ellipse at 76% 70%, #30305e 0%, transparent 51%),
+    linear-gradient(135deg, #101421 0%, #29163d 38%, #54104e 66%, #252850 100%) !important;
   background-size: 150% 150% !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
 }
@@ -223,14 +226,14 @@ body {
   content: "";
   position: absolute;
   z-index: 0 !important;
-  inset: -46%;
+  inset: -22%;
   background:
-    radial-gradient(ellipse at 27% 76%, #257fa4 0 21%, transparent 52%),
-    radial-gradient(ellipse at 67% 30%, #8c263e 0 22%, transparent 52%),
-    radial-gradient(ellipse at 74% 68%, #30305e 0 25%, transparent 54%),
-    radial-gradient(ellipse at 48% 52%, #741251 0 18%, transparent 50%),
-    linear-gradient(135deg, #2a173d 0%, #2a173d 28%, #741251 63%, #30305e 100%) !important;
-  filter: blur(31px) saturate(1.05) brightness(.84);
+    radial-gradient(ellipse at 43% 73%, #257fa4 0 24%, transparent 53%),
+    radial-gradient(ellipse at 59% 43%, #8c263e 0 25%, transparent 53%),
+    radial-gradient(ellipse at 53% 54%, #741251 0 23%, transparent 51%),
+    radial-gradient(ellipse at 76% 70%, #30305e 0 25%, transparent 54%),
+    linear-gradient(135deg, #101421 0%, #29163d 38%, #54104e 66%, #252850 100%) !important;
+  filter: blur(31px) saturate(1.2) brightness(.78);
   background-size: 155% 175%;
   animation: rumag-colour-waves 8s ease-in-out infinite;
   will-change: transform;
@@ -589,14 +592,14 @@ body {
 /* A slow, restrained colour drift gives the start screen life without moving controls. */
 .start-view::before {
   z-index: 0 !important;
-  inset: -46% !important;
+  inset: -22% !important;
   background:
-    radial-gradient(ellipse at 27% 76%, #257fa4 0 21%, transparent 52%),
-    radial-gradient(ellipse at 67% 30%, #8c263e 0 22%, transparent 52%),
-    radial-gradient(ellipse at 74% 68%, #30305e 0 25%, transparent 54%),
-    radial-gradient(ellipse at 48% 52%, #741251 0 18%, transparent 50%),
-    linear-gradient(135deg, #2a173d 0%, #2a173d 28%, #741251 63%, #30305e 100%) !important;
-  filter: blur(31px) saturate(1.05) brightness(.84) !important;
+    radial-gradient(ellipse at 43% 73%, #257fa4 0 24%, transparent 53%),
+    radial-gradient(ellipse at 59% 43%, #8c263e 0 25%, transparent 53%),
+    radial-gradient(ellipse at 53% 54%, #741251 0 23%, transparent 51%),
+    radial-gradient(ellipse at 76% 70%, #30305e 0 25%, transparent 54%),
+    linear-gradient(135deg, #101421 0%, #29163d 38%, #54104e 66%, #252850 100%) !important;
+  filter: blur(31px) saturate(1.2) brightness(.78) !important;
   background-size: 155% 175% !important;
   animation: rumag-colour-waves 8s ease-in-out infinite;
   will-change: transform;
