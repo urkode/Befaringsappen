@@ -35,11 +35,7 @@ body {
   height: 100%;
   min-height: 100% !important;
   padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
-  background:
-    radial-gradient(ellipse 58% 34% at 35% 51%, #257fa4 0%, #257fa4ae 18%, transparent 66%),
-    radial-gradient(ellipse 58% 34% at 65% 49%, #8c263e 0%, #8c263eae 18%, transparent 66%),
-    radial-gradient(ellipse 52% 28% at 50% 50%, #741251 0%, #741251b8 22%, transparent 72%),
-    linear-gradient(to bottom, #2a173d 0%, #2a173d 18%, #41204d 36%, #5c255e 50%, #41204d 64%, #2a173d 82%, #2a173d 100%) !important;
+  background: linear-gradient(to bottom, #2a173d 0%, #2d183f 40%, #3b1b49 50%, #2d183f 60%, #2a173d 100%) !important;
   background-size: 100% 100% !important;
   background-color: #2a173d !important;
   animation: none;
@@ -618,21 +614,21 @@ body {
 .start-view::before {
   display: block !important;
   z-index: 0 !important;
-  inset: 0 !important;
-  opacity: .58;
+  inset: -16% !important;
+  opacity: .7;
   background:
-    radial-gradient(ellipse 46% 29% at 35% 50%, #257fa4b8 0%, transparent 70%),
-    radial-gradient(ellipse 46% 29% at 65% 51%, #8c263eb8 0%, transparent 70%),
-    radial-gradient(ellipse 43% 25% at 50% 50%, #741251a8 0%, transparent 73%) !important;
-  background-size: 112% 112% !important;
-  filter: blur(25px) saturate(1.04) !important;
-  animation: rumag-home-glow 9s ease-in-out infinite alternate !important;
+    radial-gradient(ellipse 47% 35% at 38% 50%, #257fa4 0%, #257fa4c2 22%, transparent 72%),
+    radial-gradient(ellipse 47% 35% at 62% 50%, #8c263e 0%, #8c263ec2 22%, transparent 72%),
+    radial-gradient(ellipse 45% 30% at 50% 50%, #741251 0%, #741251bb 26%, transparent 75%) !important;
+  background-size: 120% 120% !important;
+  filter: blur(29px) saturate(1.04) brightness(.87) !important;
+  animation: rumag-home-glow 11s ease-in-out infinite alternate !important;
 }
 
 @keyframes rumag-home-glow {
-  0% { transform: scale(1.02) translate3d(-1.5%, -1%, 0); background-position: 40% 48%; }
-  48% { transform: scale(1.07) translate3d(1.5%, 1%, 0); background-position: 58% 53%; }
-  100% { transform: scale(1.03) translate3d(-.5%, 1.5%, 0); background-position: 47% 56%; }
+  0% { transform: scale(1.03) translate3d(-3%, -4%, 0); background-position: 43% 43%; }
+  48% { transform: scale(1.1) translate3d(3%, 3%, 0); background-position: 57% 57%; }
+  100% { transform: scale(1.05) translate3d(-2%, 4%, 0); background-position: 47% 61%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
