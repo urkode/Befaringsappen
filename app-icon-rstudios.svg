@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="R Studios">
   <defs>
     <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0d415d"/>
-      <stop offset=".38" stop-color="#2b1d59"/>
-      <stop offset=".7" stop-color="#76154f"/>
-      <stop offset="1" stop-color="#3e1d39"/>
+      <stop offset="0" stop-color="#0e4052"/>
+      <stop offset=".38" stop-color="#2a173d"/>
+      <stop offset=".7" stop-color="#741251"/>
+      <stop offset="1" stop-color="#251735"/>
     </linearGradient>
     <radialGradient id="cyan" cx=".08" cy=".84" r=".72">
-      <stop offset="0" stop-color="#3a93c4" stop-opacity=".88"/>
-      <stop offset="1" stop-color="#3a93c4" stop-opacity="0"/>
+      <stop offset="0" stop-color="#167086" stop-opacity=".78"/>
+      <stop offset="1" stop-color="#167086" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="pink" cx=".9" cy=".22" r=".72">
-      <stop offset="0" stop-color="#c33b78" stop-opacity=".72"/>
-      <stop offset="1" stop-color="#c33b78" stop-opacity="0"/>
+      <stop offset="0" stop-color="#8c263e" stop-opacity=".68"/>
+      <stop offset="1" stop-color="#8c263e" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1024" height="1024" fill="url(#base)"/>
