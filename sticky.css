@@ -35,7 +35,6 @@ body {
   min-height: 100% !important;
   padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
   background:
-    linear-gradient(to bottom, #24143a 0%, #24143a00 15%, #24143a00 72%, #24143a 100%),
     radial-gradient(ellipse at 8% 82%, #07535c 0%, transparent 49%),
     radial-gradient(ellipse at 87% 27%, #652a28 0%, transparent 50%),
     radial-gradient(ellipse at 78% 76%, #55124e 0%, transparent 53%),
@@ -47,7 +46,19 @@ body {
 }
 .start-view::after {
   background-position: center 50% !important;
-  z-index: 1 !important;
+  background-size: min(55vw, 300px) auto !important;
+  z-index: 2 !important;
+}
+
+/* A glass-like transition makes the iOS system tint feel intentional. */
+.start-view .edge-tint {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, #24143ae8 0%, #24143ab0 10%, #24143a57 19%, #24143a00 32%),
+    linear-gradient(to top, #24143aed 0%, #24143ab8 11%, #24143a57 20%, #24143a00 34%);
 }
 
 /* The whole start screen is the upload trigger; no visible button is needed. */
