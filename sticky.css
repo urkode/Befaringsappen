@@ -35,11 +35,11 @@ body {
   min-height: 100% !important;
   padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
   background:
-    radial-gradient(ellipse at 8% 82%, #07535c 0%, transparent 49%),
-    radial-gradient(ellipse at 87% 27%, #652a28 0%, transparent 50%),
-    radial-gradient(ellipse at 78% 76%, #55124e 0%, transparent 53%),
-    radial-gradient(ellipse at 22% 18%, #2f2052 0%, transparent 54%),
-    linear-gradient(145deg, #07191d 0%, #1c1230 43%, #360f35 70%, #1f1828 100%) !important;
+    radial-gradient(ellipse at 8% 82%, #102f4d 0%, transparent 55%),
+    radial-gradient(ellipse at 87% 27%, #32164e 0%, transparent 54%),
+    radial-gradient(ellipse at 78% 76%, #6c255e 0%, transparent 55%),
+    radial-gradient(ellipse at 22% 18%, #293665 0%, transparent 55%),
+    linear-gradient(145deg, #071827 0%, #15234d 43%, #331842 70%, #20142d 100%) !important;
   background-size: 150% 150% !important;
   background-color: #24143a !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
@@ -170,11 +170,11 @@ body {
   isolation: isolate;
   overflow: hidden !important;
   background:
-    radial-gradient(ellipse at 8% 82%, #07535c 0%, transparent 49%),
-    radial-gradient(ellipse at 87% 27%, #652a28 0%, transparent 50%),
-    radial-gradient(ellipse at 78% 76%, #55124e 0%, transparent 53%),
-    radial-gradient(ellipse at 22% 18%, #2f2052 0%, transparent 54%),
-    linear-gradient(145deg, #07191d 0%, #1c1230 43%, #360f35 70%, #1f1828 100%) !important;
+    radial-gradient(ellipse at 8% 82%, #102f4d 0%, transparent 55%),
+    radial-gradient(ellipse at 87% 27%, #32164e 0%, transparent 54%),
+    radial-gradient(ellipse at 78% 76%, #6c255e 0%, transparent 55%),
+    radial-gradient(ellipse at 22% 18%, #293665 0%, transparent 55%),
+    linear-gradient(145deg, #071827 0%, #15234d 43%, #331842 70%, #20142d 100%) !important;
   background-size: 150% 150% !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
 }
@@ -186,15 +186,15 @@ body {
   z-index: 0 !important;
   inset: -46%;
   background:
-    radial-gradient(ellipse at 16% 77%, #08717a 0 11%, transparent 41%),
-    radial-gradient(ellipse at 83% 25%, #8a3a27 0 12%, transparent 43%),
-    radial-gradient(ellipse at 79% 69%, #7d176b 0 16%, transparent 48%),
-    radial-gradient(ellipse at 26% 20%, #493088 0 18%, transparent 49%),
-    radial-gradient(ellipse at 53% 50%, #65125a 0 13%, transparent 47%),
-    linear-gradient(135deg, #07525d 0%, #2b1d58 27%, #68145b 55%, #913723 77%, #3a205b 100%) !important;
-  filter: blur(31px) saturate(1.52) brightness(.93);
+    radial-gradient(ellipse at 18% 82%, #12395a 0 14%, transparent 43%),
+    radial-gradient(ellipse at 82% 16%, #321a56 0 17%, transparent 44%),
+    radial-gradient(ellipse at 70% 62%, #bd3f81 0 17%, transparent 47%),
+    radial-gradient(ellipse at 32% 33%, #8d5fc3 0 18%, transparent 48%),
+    radial-gradient(ellipse at 52% 53%, #c64f98 0 16%, transparent 46%),
+    linear-gradient(135deg, #0a1a2b 0%, #1c2452 28%, #6e397f 52%, #a23a78 70%, #27163f 100%) !important;
+  filter: blur(31px) saturate(1.35) brightness(.9);
   background-size: 155% 175%;
-  animation: rumag-colour-waves 6s cubic-bezier(.45, .05, .25, 1) infinite;
+  animation: rumag-colour-waves 8s ease-in-out infinite;
   will-change: transform;
 }
 
@@ -311,7 +311,7 @@ body {
 }
 
 .finish-view::before {
-  animation: rumag-colour-waves 6s cubic-bezier(.45, .05, .25, 1) infinite !important;
+  animation: rumag-colour-waves 8s ease-in-out infinite !important;
 }
 
 .finish-view::after {
@@ -553,25 +553,24 @@ body {
   z-index: 0 !important;
   inset: -46% !important;
   background:
-    radial-gradient(ellipse at 16% 77%, #08717a 0 11%, transparent 41%),
-    radial-gradient(ellipse at 83% 25%, #8a3a27 0 12%, transparent 43%),
-    radial-gradient(ellipse at 79% 69%, #7d176b 0 16%, transparent 48%),
-    radial-gradient(ellipse at 26% 20%, #493088 0 18%, transparent 49%),
-    radial-gradient(ellipse at 53% 50%, #65125a 0 13%, transparent 47%),
-    linear-gradient(135deg, #07525d 0%, #2b1d58 27%, #68145b 55%, #913723 77%, #3a205b 100%) !important;
-  filter: blur(31px) saturate(1.52) brightness(.93) !important;
+    radial-gradient(ellipse at 18% 82%, #12395a 0 14%, transparent 43%),
+    radial-gradient(ellipse at 82% 16%, #321a56 0 17%, transparent 44%),
+    radial-gradient(ellipse at 70% 62%, #bd3f81 0 17%, transparent 47%),
+    radial-gradient(ellipse at 32% 33%, #8d5fc3 0 18%, transparent 48%),
+    radial-gradient(ellipse at 52% 53%, #c64f98 0 16%, transparent 46%),
+    linear-gradient(135deg, #0a1a2b 0%, #1c2452 28%, #6e397f 52%, #a23a78 70%, #27163f 100%) !important;
+  filter: blur(31px) saturate(1.35) brightness(.9) !important;
   background-size: 155% 175% !important;
-  animation: rumag-colour-waves 6s cubic-bezier(.45, .05, .25, 1) infinite;
+  animation: rumag-colour-waves 8s ease-in-out infinite;
   will-change: transform;
 }
 
 @keyframes rumag-colour-waves {
-  0% { transform: scale(1.16) translate3d(-15%, -14%, 0); background-position: 0% 0%; }
-  18% { transform: scale(1.34) translate3d(15%, -11%, 0); background-position: 94% 18%; }
-  39% { transform: scale(1.22) translate3d(8%, 15%, 0); background-position: 37% 96%; }
-  62% { transform: scale(1.37) translate3d(-14%, 10%, 0); background-position: 100% 73%; }
-  82% { transform: scale(1.25) translate3d(13%, -5%, 0); background-position: 12% 42%; }
-  100% { transform: scale(1.16) translate3d(-15%, -14%, 0); background-position: 0% 0%; }
+  0% { transform: scale(1.18) translate3d(-9%, -9%, 0); background-position: 0% 8%; }
+  27% { transform: scale(1.27) translate3d(8%, -5%, 0); background-position: 78% 18%; }
+  54% { transform: scale(1.21) translate3d(6%, 9%, 0); background-position: 44% 82%; }
+  78% { transform: scale(1.28) translate3d(-8%, 6%, 0); background-position: 91% 58%; }
+  100% { transform: scale(1.18) translate3d(-9%, -9%, 0); background-position: 0% 8%; }
 }
 
 @keyframes rumag-base-shift {
