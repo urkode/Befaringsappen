@@ -36,7 +36,7 @@
             <label for="imageUpload" class="source-choice">Velg bilde</label>
           </div>
         </div>
-        <span class="app-version">v1.4.2</span>
+        <span class="app-version">v1.4.3</span>
       </section>
 
       <section id="cameraView" class="camera-view hidden">
@@ -48,7 +48,7 @@
       <section id="editorView" class="editor-view hidden">
         <div id="canvasWrap" class="canvas-wrap">
           <canvas id="photoCanvas"></canvas><canvas id="drawCanvas"></canvas><div id="textLayer"></div>
-          <div class="editor-top-controls"><button class="floating-button close-button" id="backToStart" aria-label="Ferdig">Ferdig</button><button class="floating-button undo-button" id="undo" aria-label="Angre"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7 4 12l5 5M4 12h10a6 6 0 1 1 0 12"/></svg></button></div>
+          <div class="editor-top-controls"><button class="floating-button discard-button" id="discardSketch" aria-label="Forkast skisse">&times;</button><button class="floating-button undo-button" id="undo" aria-label="Angre"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7 4 12l5 5M4 12h10a6 6 0 1 1 0 12"/></svg></button></div>
           <div class="pen-colors" id="penColors" role="group" aria-label="Velg farge"><button class="color selected" data-color="#ef4444" style="--swatch:#ef4444" aria-label="Rød"></button><button class="color" data-color="#f59e0b" style="--swatch:#f59e0b" aria-label="Gul"></button><button class="color" data-color="#22c55e" style="--swatch:#22c55e" aria-label="Grønn"></button><button class="color" data-color="#2563eb" style="--swatch:#2563eb" aria-label="Blå"></button><button class="color" data-color="#ffffff" style="--swatch:#ffffff" aria-label="Hvit"></button></div>
           <div class="editor-bottom-controls"><button class="floating-button tool-button" id="penTool" aria-label="Tegn med penn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 20 4.2-1 10.4-10.4a2.8 2.8 0 0 0-4-4L4.2 15zM13.2 6l4.8 4.8"/></svg></button><button class="floating-button tool-button convert-button" id="recognizeTool" aria-label="Forvandle håndskrift til tekst">T<span>✦</span></button></div>
         </div>
@@ -63,7 +63,7 @@
       </section>
     </main>
     <div id="toast" role="status"></div>
-    <script src="app.js"></script><script src="finish.js"></script>
+    <script src="app.js"></script><script src="finish.js"></script><script src="editor-flow.js"></script>
   </body>
 </html>
 

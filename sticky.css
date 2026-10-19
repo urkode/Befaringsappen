@@ -199,6 +199,24 @@ body {
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
 }
 
+.editor-top-controls .discard-button {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.editor-view .finish-button {
+  position: absolute;
+  z-index: 4;
+  right: calc(18px + env(safe-area-inset-right));
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  width: auto;
+  min-width: 78px;
+  padding: 0 17px;
+  border-radius: 18px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
 .finish-view::after {
   z-index: 1 !important;
 }
