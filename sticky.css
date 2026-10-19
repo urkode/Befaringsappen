@@ -207,30 +207,14 @@ body {
 .finish-view {
   isolation: isolate;
   overflow: hidden !important;
-  background:
-    radial-gradient(ellipse 48% 36% at 37% 51%, #257fa4 0%, #257fa4d6 23%, transparent 72%),
-    radial-gradient(ellipse 48% 36% at 63% 49%, #8c263e 0%, #8c263ed6 23%, transparent 72%),
-    radial-gradient(ellipse 43% 31% at 51% 51%, #741251 0%, #741251dc 25%, transparent 75%),
-    linear-gradient(to bottom, #2a173d 0%, #2a173d 15%, #471a50 37%, #5a1c5b 50%, #471a50 63%, #2a173d 85%, #2a173d 100%) !important;
-  background-size: 150% 150% !important;
-  animation: rumag-base-shift 9s ease-in-out infinite alternate;
+  background: linear-gradient(to bottom, #2a173d 0%, #2d183f 40%, #3b1b49 50%, #2d183f 60%, #2a173d 100%) !important;
+  background-size: 100% 100% !important;
+  animation: none;
 }
 
 .editor-view::before,
 .finish-view::before {
-  content: "";
-  position: absolute;
-  z-index: 0 !important;
-  inset: -8%;
-  background:
-    radial-gradient(ellipse 48% 36% at 37% 51%, #257fa4 0 25%, transparent 70%),
-    radial-gradient(ellipse 48% 36% at 63% 49%, #8c263e 0 25%, transparent 70%),
-    radial-gradient(ellipse 43% 31% at 51% 51%, #741251 0 24%, transparent 73%),
-    linear-gradient(to bottom, #2a173d 0%, #2a173d 15%, #471a50 37%, #5a1c5b 50%, #471a50 63%, #2a173d 85%, #2a173d 100%) !important;
-  filter: blur(28px) saturate(1.15) brightness(.82);
-  background-size: 155% 175%;
-  animation: rumag-colour-waves 8s ease-in-out infinite;
-  will-change: transform;
+  display: none !important;
 }
 
 .editor-view .canvas-wrap {
@@ -328,7 +312,7 @@ body {
     linear-gradient(to top, #2a173d 0%, #2a173d 8%, #2a173dd9 15%, #2a173d85 25%, #2a173d00 38%);
 }
 
-.finish-view > :not(.finish-edge-tint) {
+.finish-view > :not(.finish-edge-tint):not(.colour-orbits) {
   position: relative;
   z-index: 3;
 }
@@ -618,7 +602,9 @@ body {
 }
 
 /* Two soft logo-colour lights orbit each other behind the fixed frosted edges. */
-.start-view .colour-orbits {
+.start-view .colour-orbits,
+.editor-view .colour-orbits,
+.finish-view .colour-orbits {
   position: absolute;
   z-index: 0;
   inset: 0;
@@ -627,7 +613,11 @@ body {
 }
 
 .start-view .colour-orbits::before,
-.start-view .colour-orbits::after {
+.start-view .colour-orbits::after,
+.editor-view .colour-orbits::before,
+.editor-view .colour-orbits::after,
+.finish-view .colour-orbits::before,
+.finish-view .colour-orbits::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -640,7 +630,9 @@ body {
   will-change: transform;
 }
 
-.start-view .colour-orbits::before {
+.start-view .colour-orbits::before,
+.editor-view .colour-orbits::before,
+.finish-view .colour-orbits::before {
   background:
     radial-gradient(ellipse at 48% 52%, #257fa4e8 0%, #257fa4a5 40%, transparent 78%),
     radial-gradient(ellipse at 28% 68%, #257fa47a 0%, transparent 53%),
@@ -648,7 +640,9 @@ body {
   animation: blue-pair-orbit 16s linear infinite;
 }
 
-.start-view .colour-orbits::after {
+.start-view .colour-orbits::after,
+.editor-view .colour-orbits::after,
+.finish-view .colour-orbits::after {
   background:
     radial-gradient(ellipse at 52% 48%, #8c263ee8 0%, #8c263ea5 40%, transparent 78%),
     radial-gradient(ellipse at 72% 67%, #8c263e7a 0%, transparent 53%),
@@ -685,6 +679,10 @@ body {
   .start-view::before,
   .start-view .colour-orbits::before,
   .start-view .colour-orbits::after,
+  .editor-view .colour-orbits::before,
+  .editor-view .colour-orbits::after,
+  .finish-view .colour-orbits::before,
+  .finish-view .colour-orbits::after,
   .ambient-stars i,
   .image-source-dialog,
   .image-source-card { animation: none; }
