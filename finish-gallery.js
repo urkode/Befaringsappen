@@ -33,11 +33,11 @@ async function galleryRequest(mode, action) {
   });
 }
 
-function sketchFileName(sketch) {
+function sketchFileName(sketch, extension = 'pdf') {
   const rawName = (sketch.name || 'skisse').trim().replace(/[\\/:*?"<>|]+/g, '-');
-  const withoutExtension = rawName.replace(/\.(jpe?g)$/i, '') || 'skisse';
-  const prefix = projectTitle().replace(/[\\/:*?"<>|]+/g, '-').replace(/\.(jpe?g)$/i, '');
-  return `${prefix ? `${prefix}_` : ''}${withoutExtension}.jpg`;
+  const withoutExtension = rawName.replace(/\.(jpe?g|pdf)$/i, '') || 'skisse';
+  const prefix = projectTitle().replace(/[\\/:*?"<>|]+/g, '-').replace(/\.(jpe?g|pdf)$/i, '');
+  return `${prefix ? `${prefix}_` : ''}${withoutExtension}.${extension}`;
 }
 
 async function saveSketchRecord(sketch) {
@@ -123,11 +123,12 @@ async function loadSavedSketches() {
   renderGallery();
 }
 
-async function addFinishedSketch(blob) {
+async function addFinishedSketch(blob, pdfBlob) {
   const sketch = {
     id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
     name: '',
     blob,
+    pdfBlob,
     createdAt: Date.now()
   };
   await saveSketchRecord(sketch);
@@ -137,7 +138,10 @@ async function addFinishedSketch(blob) {
 
 async function shareSavedSketches() {
   if (!savedSketches.length) return;
-  const files = savedSketches.map(sketch => new File([sketch.blob], sketchFileName(sketch), { type: 'image/jpeg' }));
+  const files = savedSketches.map(sketch => {
+    const isPdf = Boolean(sketch.pdfBlob);
+    return new File([isPdf ? sketch.pdfBlob : sketch.blob], sketchFileName(sketch, isPdf ? 'pdf' : 'jpg'), { type: isPdf ? 'application/pdf' : 'image/jpeg' });
+  });
   if (navigator.share && navigator.canShare?.({ files })) {
     try {
       await navigator.share({ title: 'Befaringsskisser', files });
@@ -159,8 +163,9 @@ async function shareSavedSketches() {
 $('#backToStart').onclick = async () => {
   const blob = await exportImage();
   if (!blob) return;
+  const pdfBlob = exportEditablePdf();
   finishedBlob = blob;
-  await addFinishedSketch(blob);
+  await addFinishedSketch(blob, pdfBlob);
   show('finishView');
 };
 
