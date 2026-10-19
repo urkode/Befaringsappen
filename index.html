@@ -24,10 +24,18 @@
     <main id="app">
       <section id="startView" class="start-view">
         <div class="start-actions">
-          <label class="primary-button upload-button" for="imageUpload" aria-label="Last opp bilde"></label>
+          <button id="openImageSource" class="primary-button upload-button" aria-label="Velg bilde"></button>
           <input id="imageUpload" type="file" accept="image/*" hidden />
+          <input id="cameraUpload" type="file" accept="image/*" capture="environment" hidden />
         </div>
-        <span class="app-version">v1.3.0</span>
+        <div id="imageSourceDialog" class="image-source-dialog hidden" role="dialog" aria-modal="true" aria-label="Velg bilde">
+          <div class="image-source-card">
+            <button id="selectCamera" class="source-choice">Ta bilde</button>
+            <button id="selectLibrary" class="source-choice">Velg bilde</button>
+            <button id="cancelImageSource" class="source-cancel">Avbryt</button>
+          </div>
+        </div>
+        <span class="app-version">v1.3.1</span>
       </section>
 
       <section id="cameraView" class="camera-view hidden">

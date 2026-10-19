@@ -46,7 +46,7 @@ body {
 }
 
 .start-view::after {
-  background-position: center 40% !important;
+  background-position: center 50% !important;
 }
 
 /* The whole start screen is the upload trigger; no visible button is needed. */
@@ -78,6 +78,49 @@ body {
 
 .start-view .app-version {
   z-index: 3 !important;
+}
+
+.image-source-dialog {
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: #05050a66;
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+.image-source-card {
+  width: min(100%, 300px);
+  overflow: hidden;
+  border: 1px solid #ffffff3d;
+  border-radius: 24px;
+  background: #11111ae8;
+  box-shadow: 0 22px 56px #000a;
+}
+
+.source-choice,
+.source-cancel {
+  display: block;
+  width: 100%;
+  min-height: 62px;
+  padding: 14px 18px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font: 800 1rem/1.2 inherit;
+}
+
+.source-choice + .source-choice {
+  border-top: 1px solid #ffffff20;
+}
+
+.source-cancel {
+  margin-top: 8px;
+  border-top: 1px solid #ffffff20;
+  color: #ffffff9e;
 }
 
 /* A slow, restrained colour drift gives the start screen life without moving controls. */
