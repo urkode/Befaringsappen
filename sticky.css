@@ -36,18 +36,23 @@ body {
   min-height: 100% !important;
   padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
   background:
-    radial-gradient(ellipse 48% 36% at 37% 51%, #257fa4 0%, #257fa4d6 23%, transparent 72%),
-    radial-gradient(ellipse 48% 36% at 63% 49%, #8c263e 0%, #8c263ed6 23%, transparent 72%),
-    radial-gradient(ellipse 43% 31% at 51% 51%, #741251 0%, #741251dc 25%, transparent 75%),
-    linear-gradient(to bottom, #2a173d 0%, #2a173d 15%, #471a50 37%, #5a1c5b 50%, #471a50 63%, #2a173d 85%, #2a173d 100%) !important;
-  background-size: 150% 150% !important;
+    radial-gradient(ellipse 58% 34% at 35% 51%, #257fa4 0%, #257fa4e6 18%, transparent 66%),
+    radial-gradient(ellipse 58% 34% at 65% 49%, #8c263e 0%, #8c263ee6 18%, transparent 66%),
+    radial-gradient(ellipse 52% 28% at 50% 50%, #741251 0%, #741251d9 22%, transparent 72%),
+    linear-gradient(to bottom, #2a173d 0%, #2a173d 18%, #41204d 36%, #5c255e 50%, #41204d 64%, #2a173d 82%, #2a173d 100%) !important;
+  background-size: 100% 100% !important;
   background-color: #2a173d !important;
-  animation: rumag-base-shift 9s ease-in-out infinite alternate;
+  animation: none;
 }
 .start-view::after {
   background-position: center 50% !important;
   background-size: min(55vw, 300px) auto !important;
   z-index: 2 !important;
+}
+
+/* The home screen is intentionally drawn inside the actual app viewport. */
+.start-view::before {
+  display: none !important;
 }
 
 /* A glass-like transition makes the iOS system tint feel intentional. */
