@@ -182,7 +182,7 @@ body {
     radial-gradient(ellipse at 53% 50%, #65125a 0 13%, transparent 47%),
     linear-gradient(135deg, #07525d 0%, #2b1d58 27%, #68145b 55%, #913723 77%, #3a205b 100%) !important;
   filter: blur(31px) saturate(1.22) brightness(.8);
-  animation: rumag-colour-drift 13s linear infinite;
+  animation: rumag-colour-waves 7s ease-in-out infinite;
   will-change: transform;
 }
 
@@ -299,7 +299,7 @@ body {
 }
 
 .finish-view::before {
-  animation: rumag-colour-drift 13s linear infinite !important;
+  animation: rumag-colour-waves 7s ease-in-out infinite !important;
 }
 
 .finish-view::after {
@@ -548,16 +548,16 @@ body {
     radial-gradient(ellipse at 53% 50%, #65125a 0 13%, transparent 47%),
     linear-gradient(135deg, #07525d 0%, #2b1d58 27%, #68145b 55%, #913723 77%, #3a205b 100%) !important;
   filter: blur(31px) saturate(1.22) brightness(.8) !important;
-  animation: rumag-colour-drift 13s linear infinite;
+  animation: rumag-colour-waves 7s ease-in-out infinite;
   will-change: transform;
 }
 
-@keyframes rumag-colour-drift {
-  0% { transform: scale(1.23) translate3d(-11%, -10%, 0) rotate(0deg); }
-  25% { transform: scale(1.31) translate3d(11%, -12%, 0) rotate(88deg); }
-  50% { transform: scale(1.24) translate3d(14%, 11%, 0) rotate(180deg); }
-  75% { transform: scale(1.32) translate3d(-12%, 13%, 0) rotate(271deg); }
-  100% { transform: scale(1.23) translate3d(-11%, -10%, 0) rotate(360deg); }
+@keyframes rumag-colour-waves {
+  0% { transform: scale(1.18) translate3d(-4%, -12%, 0); }
+  24% { transform: scale(1.25) translate3d(5%, -5%, 0); }
+  52% { transform: scale(1.2) translate3d(-3%, 11%, 0); }
+  76% { transform: scale(1.27) translate3d(6%, 5%, 0); }
+  100% { transform: scale(1.18) translate3d(-4%, -12%, 0); }
 }
 
 @keyframes rumag-base-shift {
