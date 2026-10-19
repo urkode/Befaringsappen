@@ -5,18 +5,19 @@ body {
   height: 100%;
   overflow: hidden;
   overscroll-behavior: none;
-  background-color: #24143a;
+  background-color: #2b1d59;
   color-scheme: dark;
 }
 
 body {
   position: fixed;
   inset: 0;
-  background-color: #24143a;
+  background-color: #2b1d59;
   background-image:
-    radial-gradient(ellipse at 8% 82%, #07535c 0%, transparent 49%),
-    radial-gradient(ellipse at 87% 27%, #652a28 0%, transparent 50%),
-    linear-gradient(145deg, #07191d 0%, #1c1230 43%, #360f35 70%, #1f1828 100%);
+    radial-gradient(ellipse at 8% 82%, #126d83 0%, transparent 49%),
+    radial-gradient(ellipse at 18% 28%, #28679a 0%, transparent 43%),
+    radial-gradient(ellipse at 87% 27%, #762246 0%, transparent 50%),
+    linear-gradient(145deg, #0d2038 0%, #2b1d59 43%, #621449 70%, #25133c 100%);
 }
 
 #app {
@@ -26,7 +27,7 @@ body {
   min-height: calc(100dvh + env(safe-area-inset-top) + env(safe-area-inset-bottom));
   overflow: hidden;
   overscroll-behavior: none;
-  background-color: #24143a;
+  background-color: #2b1d59;
 }
 
 /* Leave the Dynamic Island area as part of the RUMAG background, not as empty space. */
@@ -35,13 +36,13 @@ body {
   min-height: 100% !important;
   padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
   background:
-    radial-gradient(ellipse at 8% 82%, #102f4d 0%, transparent 55%),
-    radial-gradient(ellipse at 87% 27%, #32164e 0%, transparent 54%),
-    radial-gradient(ellipse at 78% 76%, #6c255e 0%, transparent 55%),
-    radial-gradient(ellipse at 22% 18%, #293665 0%, transparent 55%),
-    linear-gradient(145deg, #071827 0%, #15234d 43%, #331842 70%, #20142d 100%) !important;
+    radial-gradient(ellipse at 6% 84%, #126d83 0%, transparent 55%),
+    radial-gradient(ellipse at 18% 30%, #2c75aa 0%, transparent 46%),
+    radial-gradient(ellipse at 87% 20%, #762246 0%, transparent 54%),
+    radial-gradient(ellipse at 54% 46%, #79165f 0%, transparent 53%),
+    linear-gradient(145deg, #0d2038 0%, #2b1d59 43%, #621449 70%, #25133c 100%) !important;
   background-size: 150% 150% !important;
-  background-color: #24143a !important;
+  background-color: #2b1d59 !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
 }
 .start-view::after {
@@ -57,11 +58,11 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(to bottom, #24143a 0%, #24143a 8%, #24143ad9 15%, #24143a85 24%, #24143a00 37%),
-    linear-gradient(to top, #24143a 0%, #24143a 8%, #24143ad9 15%, #24143a85 25%, #24143a00 38%);
+    linear-gradient(to bottom, #2b1d59 0%, #2b1d59 8%, #2b1d59d9 15%, #2b1d5985 24%, #2b1d5900 37%),
+    linear-gradient(to top, #2b1d59 0%, #2b1d59 8%, #2b1d59d9 15%, #2b1d5985 25%, #2b1d5900 38%);
 }
 
-/* Tiny white points give the colour field a restrained, living depth. */
+/* A few small stars appear independently, then fade away again. */
 .ambient-stars {
   position: absolute;
   z-index: 1;
@@ -75,38 +76,28 @@ body {
 
 .editor-view .ambient-stars { z-index: 0; }
 
-.ambient-stars::before,
-.ambient-stars::after {
-  content: "";
+.ambient-stars i {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
-  border-radius: 50%;
-  background: #fff;
-  opacity: .15;
-  box-shadow:
-    8vw 13vh #fff, 22vw 28vh #fff, 42vw 9vh #fff, 63vw 22vh #fff,
-    79vw 13vh #fff, 91vw 37vh #fff, 14vw 62vh #fff, 34vw 76vh #fff,
-    57vw 59vh #fff, 73vw 83vh #fff, 94vw 68vh #fff;
-  animation: star-twinkle 3.8s ease-in-out infinite alternate;
-}
-
-.ambient-stars::after {
+  display: block;
   width: 2px;
   height: 2px;
-  opacity: .08;
-  box-shadow:
-    16vw 38vh #fff, 29vw 14vh #fff, 51vw 43vh #fff, 68vw 6vh #fff,
-    86vw 54vh #fff, 7vw 86vh #fff, 47vw 88vh #fff, 81vw 91vh #fff;
-  animation-delay: -1.7s;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  box-shadow: 0 0 5px #ffffffa8;
+  animation: star-appear 5.8s ease-in-out infinite;
 }
 
-@keyframes star-twinkle {
-  0% { opacity: .05; transform: scale(.7); }
-  48% { opacity: .46; transform: scale(1.15); }
-  100% { opacity: .12; transform: scale(.85); }
+.ambient-stars i:nth-child(1) { top: 16%; left: 17%; animation-delay: -1.2s; }
+.ambient-stars i:nth-child(2) { top: 29%; left: 79%; width: 3px; height: 3px; animation-delay: -4.3s; }
+.ambient-stars i:nth-child(3) { top: 58%; left: 31%; animation-delay: -2.5s; }
+.ambient-stars i:nth-child(4) { top: 76%; left: 83%; width: 3px; height: 3px; animation-delay: -5.4s; }
+.ambient-stars i:nth-child(5) { top: 88%; left: 55%; animation-delay: -3.5s; }
+
+@keyframes star-appear {
+  0%, 28%, 100% { opacity: 0; transform: scale(.35); }
+  40%, 57% { opacity: .86; transform: scale(1); }
+  68% { opacity: 0; transform: scale(1.3); }
 }
 
 .start-view .brand-studios {
@@ -218,11 +209,11 @@ body {
   isolation: isolate;
   overflow: hidden !important;
   background:
-    radial-gradient(ellipse at 8% 82%, #102f4d 0%, transparent 55%),
-    radial-gradient(ellipse at 87% 27%, #32164e 0%, transparent 54%),
-    radial-gradient(ellipse at 78% 76%, #6c255e 0%, transparent 55%),
-    radial-gradient(ellipse at 22% 18%, #293665 0%, transparent 55%),
-    linear-gradient(145deg, #071827 0%, #15234d 43%, #331842 70%, #20142d 100%) !important;
+    radial-gradient(ellipse at 6% 84%, #126d83 0%, transparent 55%),
+    radial-gradient(ellipse at 18% 30%, #2c75aa 0%, transparent 46%),
+    radial-gradient(ellipse at 87% 20%, #762246 0%, transparent 54%),
+    radial-gradient(ellipse at 54% 46%, #79165f 0%, transparent 53%),
+    linear-gradient(145deg, #0d2038 0%, #2b1d59 43%, #621449 70%, #25133c 100%) !important;
   background-size: 150% 150% !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
 }
@@ -234,16 +225,16 @@ body {
   z-index: 0 !important;
   inset: -46%;
   background:
-    radial-gradient(ellipse at 14% 72%, #2875a8 0 12%, transparent 39%),
-    radial-gradient(ellipse at 18% 82%, #12395a 0 14%, transparent 43%),
-    radial-gradient(ellipse at 82% 16%, #321a56 0 17%, transparent 44%),
-    radial-gradient(ellipse at 81% 38%, #d44767 0 15%, transparent 44%),
-    radial-gradient(ellipse at 70% 62%, #bd3f81 0 17%, transparent 47%),
-    radial-gradient(ellipse at 32% 33%, #8d5fc3 0 18%, transparent 48%),
-    radial-gradient(ellipse at 52% 53%, #c64f98 0 16%, transparent 46%),
-    radial-gradient(ellipse at 94% 73%, #b85a42 0 10%, transparent 38%),
-    linear-gradient(135deg, #0a1a2b 0%, #1c2452 25%, #6e397f 49%, #b03e78 69%, #32163f 100%) !important;
-  filter: blur(31px) saturate(1.35) brightness(.9);
+    radial-gradient(ellipse at 10% 76%, #3d9dca 0 11%, transparent 37%),
+    radial-gradient(ellipse at 17% 84%, #167992 0 14%, transparent 42%),
+    radial-gradient(ellipse at 79% 16%, #5146a0 0 17%, transparent 43%),
+    radial-gradient(ellipse at 84% 34%, #9e2f63 0 16%, transparent 43%),
+    radial-gradient(ellipse at 70% 62%, #bb2674 0 17%, transparent 46%),
+    radial-gradient(ellipse at 33% 31%, #8860c2 0 18%, transparent 47%),
+    radial-gradient(ellipse at 48% 54%, #b93a82 0 16%, transparent 45%),
+    radial-gradient(ellipse at 94% 73%, #763147 0 10%, transparent 37%),
+    linear-gradient(135deg, #10233c 0%, #2b1d59 25%, #68225e 51%, #94194f 69%, #2c163d 100%) !important;
+  filter: blur(31px) saturate(1.22) brightness(.88);
   background-size: 155% 175%;
   animation: rumag-colour-waves 8s ease-in-out infinite;
   will-change: transform;
@@ -253,8 +244,8 @@ body {
   position: relative;
   z-index: 1;
   background:
-    linear-gradient(to bottom, #24143a 0%, #24143a 8%, #24143ad9 15%, #24143a85 24%, #24143a00 37%),
-    linear-gradient(to top, #24143a 0%, #24143a 8%, #24143ad9 15%, #24143a85 25%, #24143a00 38%) !important;
+    linear-gradient(to bottom, #2b1d59 0%, #2b1d59 8%, #2b1d59d9 15%, #2b1d5985 24%, #2b1d5900 37%),
+    linear-gradient(to top, #2b1d59 0%, #2b1d59 8%, #2b1d59d9 15%, #2b1d5985 25%, #2b1d5900 38%) !important;
 }
 
 .editor-view .floating-button,
@@ -340,8 +331,8 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(to bottom, #24143a 0%, #24143a 8%, #24143ad9 15%, #24143a85 24%, #24143a00 37%),
-    linear-gradient(to top, #24143a 0%, #24143a 8%, #24143ad9 15%, #24143a85 25%, #24143a00 38%);
+    linear-gradient(to bottom, #2b1d59 0%, #2b1d59 8%, #2b1d59d9 15%, #2b1d5985 24%, #2b1d5900 37%),
+    linear-gradient(to top, #2b1d59 0%, #2b1d59 8%, #2b1d59d9 15%, #2b1d5985 25%, #2b1d5900 38%);
 }
 
 .finish-view > :not(.finish-edge-tint) {
@@ -604,16 +595,16 @@ body {
   z-index: 0 !important;
   inset: -46% !important;
   background:
-    radial-gradient(ellipse at 14% 72%, #2875a8 0 12%, transparent 39%),
-    radial-gradient(ellipse at 18% 82%, #12395a 0 14%, transparent 43%),
-    radial-gradient(ellipse at 82% 16%, #321a56 0 17%, transparent 44%),
-    radial-gradient(ellipse at 81% 38%, #d44767 0 15%, transparent 44%),
-    radial-gradient(ellipse at 70% 62%, #bd3f81 0 17%, transparent 47%),
-    radial-gradient(ellipse at 32% 33%, #8d5fc3 0 18%, transparent 48%),
-    radial-gradient(ellipse at 52% 53%, #c64f98 0 16%, transparent 46%),
-    radial-gradient(ellipse at 94% 73%, #b85a42 0 10%, transparent 38%),
-    linear-gradient(135deg, #0a1a2b 0%, #1c2452 25%, #6e397f 49%, #b03e78 69%, #32163f 100%) !important;
-  filter: blur(31px) saturate(1.35) brightness(.9) !important;
+    radial-gradient(ellipse at 10% 76%, #3d9dca 0 11%, transparent 37%),
+    radial-gradient(ellipse at 17% 84%, #167992 0 14%, transparent 42%),
+    radial-gradient(ellipse at 79% 16%, #5146a0 0 17%, transparent 43%),
+    radial-gradient(ellipse at 84% 34%, #9e2f63 0 16%, transparent 43%),
+    radial-gradient(ellipse at 70% 62%, #bb2674 0 17%, transparent 46%),
+    radial-gradient(ellipse at 33% 31%, #8860c2 0 18%, transparent 47%),
+    radial-gradient(ellipse at 48% 54%, #b93a82 0 16%, transparent 45%),
+    radial-gradient(ellipse at 94% 73%, #763147 0 10%, transparent 37%),
+    linear-gradient(135deg, #10233c 0%, #2b1d59 25%, #68225e 51%, #94194f 69%, #2c163d 100%) !important;
+  filter: blur(31px) saturate(1.22) brightness(.88) !important;
   background-size: 155% 175% !important;
   animation: rumag-colour-waves 8s ease-in-out infinite;
   will-change: transform;
@@ -636,8 +627,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .start-view,
   .start-view::before,
-  .ambient-stars::before,
-  .ambient-stars::after,
+  .ambient-stars i,
   .image-source-dialog,
   .image-source-card { animation: none; }
 }
