@@ -614,21 +614,23 @@ body {
 .start-view::before {
   display: block !important;
   z-index: 0 !important;
-  inset: -16% !important;
-  opacity: .7;
+  inset: -22% !important;
+  opacity: .78;
   background:
     radial-gradient(ellipse 47% 35% at 38% 50%, #257fa4 0%, #257fa4c2 22%, transparent 72%),
     radial-gradient(ellipse 47% 35% at 62% 50%, #8c263e 0%, #8c263ec2 22%, transparent 72%),
     radial-gradient(ellipse 45% 30% at 50% 50%, #741251 0%, #741251bb 26%, transparent 75%) !important;
-  background-size: 120% 120% !important;
-  filter: blur(29px) saturate(1.04) brightness(.87) !important;
-  animation: rumag-home-glow 11s ease-in-out infinite alternate !important;
+  background-size: 155% 155% !important;
+  filter: blur(25px) saturate(1.08) brightness(.86) !important;
+  animation: rumag-home-glow 7s ease-in-out infinite !important;
 }
 
 @keyframes rumag-home-glow {
-  0% { transform: scale(1.03) translate3d(-3%, -4%, 0); background-position: 43% 43%; }
-  48% { transform: scale(1.1) translate3d(3%, 3%, 0); background-position: 57% 57%; }
-  100% { transform: scale(1.05) translate3d(-2%, 4%, 0); background-position: 47% 61%; }
+  0% { transform: scale(1.06) translate3d(-8%, -7%, 0); background-position: 4% 12%; }
+  25% { transform: scale(1.14) translate3d(7%, -4%, 0); background-position: 88% 22%; }
+  52% { transform: scale(1.09) translate3d(8%, 7%, 0); background-position: 72% 91%; }
+  76% { transform: scale(1.15) translate3d(-7%, 6%, 0); background-position: 12% 76%; }
+  100% { transform: scale(1.06) translate3d(-8%, -7%, 0); background-position: 4% 12%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
