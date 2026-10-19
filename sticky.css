@@ -350,6 +350,8 @@ body {
   box-shadow: 0 12px 28px #0005;
   backdrop-filter: blur(13px) saturate(1.14);
   -webkit-backdrop-filter: blur(13px) saturate(1.14);
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
 .sketch-preview img {
@@ -376,6 +378,16 @@ body {
   box-shadow: 0 3px 10px #0005;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+}
+
+.sketch-card.is-opening .sketch-preview {
+  animation: sketch-open .2s cubic-bezier(.22, .85, .35, 1) both;
+}
+
+@keyframes sketch-open {
+  0% { opacity: 1; transform: scale(1); }
+  58% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 0; transform: scale(1.28); }
 }
 
 .sketch-name {

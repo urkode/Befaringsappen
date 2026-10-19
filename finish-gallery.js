@@ -3,6 +3,7 @@ const galleryDatabase = 'befaringsskisse-gallery';
 const galleryStore = 'sketches';
 const projectTitleStorageKey = 'befaringsskisse-project-title';
 let savedSketches = [];
+let editingSketchId = null;
 
 function projectTitle() {
   return (localStorage.getItem(projectTitleStorageKey) || '').trim();
@@ -48,6 +49,79 @@ async function removeSketchRecord(id) {
   await galleryRequest('readwrite', store => store.delete(id));
 }
 
+function snapshotEditorState() {
+  return {
+    photoData: photo.toDataURL('image/jpeg', .95),
+    width: photo.width,
+    height: photo.height,
+    strokes: strokes.map(stroke => ({ ...stroke, points: stroke.points.map(point => ({ ...point })) })),
+    erasedRegions: erasedRegions.map(region => ({ ...region })),
+    text: [...textLayer.querySelectorAll('.text-entry')].map(entry => ({
+      value: entry.value,
+      x: Number(entry.dataset.x),
+      y: Number(entry.dataset.y),
+      size: Number(entry.dataset.size),
+      color: entry.style.getPropertyValue('--text-color') || '#ffffff'
+    }))
+  };
+}
+
+function addRestoredText(entry) {
+  const input = document.createElement('input');
+  const layerRect = textLayer.getBoundingClientRect();
+  input.className = 'text-entry';
+  input.value = entry.value || '';
+  input.style.left = `${entry.x / draw.width * layerRect.width}px`;
+  input.style.top = `${entry.y / draw.height * layerRect.height}px`;
+  input.style.setProperty('--font-size', `${entry.size}px`);
+  input.style.setProperty('--text-color', entry.color || '#ffffff');
+  input.dataset.x = entry.x;
+  input.dataset.y = entry.y;
+  input.dataset.size = entry.size;
+  input.style.width = `${Math.max(55, input.value.length * entry.size * .64 + 17)}px`;
+  input.addEventListener('input', () => {
+    if (!input.value.trim()) { input.remove(); return; }
+    input.style.width = `${Math.max(55, input.value.length * Number(input.dataset.size) * .64 + 17)}px`;
+  });
+  makeMovable(input);
+  textLayer.append(input);
+}
+
+function loadBlobAsDataUrl(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(blob);
+  });
+}
+
+async function reopenSketch(sketch) {
+  const state = sketch.editorState || {
+    photoData: await loadBlobAsDataUrl(sketch.blob),
+    width: 0,
+    height: 0,
+    strokes: [],
+    erasedRegions: [],
+    text: []
+  };
+  const source = new Image();
+  source.onload = () => {
+    imageData = { width: state.width || source.naturalWidth, height: state.height || source.naturalHeight, src: source };
+    setupEditor();
+    strokes = (state.strokes || []).map(stroke => ({ ...stroke, points: stroke.points.map(point => ({ ...point })) }));
+    erasedRegions = (state.erasedRegions || []).map(region => ({ ...region }));
+    conversionSnapshot = null;
+    requestAnimationFrame(() => {
+      resizeLayers();
+      (state.text || []).forEach(addRestoredText);
+      render();
+    });
+    finishedBlob = sketch.blob;
+  };
+  source.src = state.photoData;
+}
+
 function renderGallery() {
   const grid = $('#sketchGrid');
   if (!grid) return;
@@ -66,12 +140,18 @@ function renderGallery() {
     image.src = imageUrl;
     image.onload = () => URL.revokeObjectURL(imageUrl);
     preview.append(image);
+    preview.onclick = event => {
+      if (event.target.closest('.sketch-remove')) return;
+      editingSketchId = sketch.id;
+      card.classList.add('is-opening');
+      setTimeout(() => reopenSketch(sketch), 180);
+    };
 
     const remove = document.createElement('button');
     remove.type = 'button';
     remove.className = 'sketch-remove';
     remove.setAttribute('aria-label', 'Slett skisse');
-    remove.textContent = '−';
+    remove.innerHTML = '&times;';
     remove.onclick = async () => {
       if (!confirm('Er du sikker på at du vil slette denne skissen?')) return;
       await removeSketchRecord(sketch.id);
@@ -123,12 +203,13 @@ async function loadSavedSketches() {
   renderGallery();
 }
 
-async function addFinishedSketch(blob, pdfBlob) {
+async function addFinishedSketch(blob, pdfBlob, editorState) {
   const sketch = {
     id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
     name: '',
     blob,
     pdfBlob,
+    editorState,
     createdAt: Date.now()
   };
   await saveSketchRecord(sketch);
@@ -164,8 +245,19 @@ $('#backToStart').onclick = async () => {
   const blob = await exportImage();
   if (!blob) return;
   const pdfBlob = exportEditablePdf();
+  const editorState = snapshotEditorState();
   finishedBlob = blob;
-  await addFinishedSketch(blob, pdfBlob);
+  if (editingSketchId) {
+    const index = savedSketches.findIndex(sketch => sketch.id === editingSketchId);
+    if (index !== -1) {
+      savedSketches[index] = { ...savedSketches[index], blob, pdfBlob, editorState, updatedAt: Date.now() };
+      await saveSketchRecord(savedSketches[index]);
+    }
+    editingSketchId = null;
+    renderGallery();
+  } else {
+    await addFinishedSketch(blob, pdfBlob, editorState);
+  }
   show('finishView');
 };
 
