@@ -14,11 +14,11 @@ body {
   inset: 0;
   background-color: #25163c;
   background-image:
-    radial-gradient(ellipse at 7% 86%, #0c5061 0%, transparent 51%),
+    radial-gradient(ellipse at 7% 86%, #0b6178 0%, transparent 58%),
     radial-gradient(ellipse at 33% 54%, #842338 0%, transparent 48%),
     radial-gradient(ellipse at 61% 40%, #78105d 0%, transparent 52%),
-    radial-gradient(ellipse at 94% 55%, #3e4a81 0%, transparent 49%),
-    linear-gradient(145deg, #101827 0%, #29163b 43%, #5d1054 70%, #231731 100%);
+    radial-gradient(ellipse at 91% 53%, #4a5c9b 0%, transparent 61%),
+    linear-gradient(145deg, #101827 0%, #29163b 39%, #5d1054 61%, #30305e 81%, #211731 100%);
 }
 
 #app {
@@ -37,11 +37,11 @@ body {
   min-height: 100% !important;
   padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
   background:
-    radial-gradient(ellipse at 7% 86%, #0c5061 0%, transparent 55%),
+    radial-gradient(ellipse at 7% 86%, #0b6178 0%, transparent 60%),
     radial-gradient(ellipse at 33% 54%, #842338 0%, transparent 50%),
     radial-gradient(ellipse at 61% 40%, #78105d 0%, transparent 54%),
-    radial-gradient(ellipse at 94% 55%, #3e4a81 0%, transparent 50%),
-    linear-gradient(145deg, #101827 0%, #29163b 43%, #5d1054 70%, #231731 100%) !important;
+    radial-gradient(ellipse at 91% 53%, #4a5c9b 0%, transparent 63%),
+    linear-gradient(145deg, #101827 0%, #29163b 39%, #5d1054 61%, #30305e 81%, #211731 100%) !important;
   background-size: 150% 150% !important;
   background-color: #25163c !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
@@ -212,11 +212,11 @@ body {
   isolation: isolate;
   overflow: hidden !important;
   background:
-    radial-gradient(ellipse at 7% 86%, #0c5061 0%, transparent 55%),
+    radial-gradient(ellipse at 7% 86%, #0b6178 0%, transparent 60%),
     radial-gradient(ellipse at 33% 54%, #842338 0%, transparent 50%),
     radial-gradient(ellipse at 61% 40%, #78105d 0%, transparent 54%),
-    radial-gradient(ellipse at 94% 55%, #3e4a81 0%, transparent 50%),
-    linear-gradient(145deg, #101827 0%, #29163b 43%, #5d1054 70%, #231731 100%) !important;
+    radial-gradient(ellipse at 91% 53%, #4a5c9b 0%, transparent 63%),
+    linear-gradient(145deg, #101827 0%, #29163b 39%, #5d1054 61%, #30305e 81%, #211731 100%) !important;
   background-size: 150% 150% !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
 }
@@ -228,12 +228,12 @@ body {
   z-index: 0 !important;
   inset: -46%;
   background:
-    radial-gradient(ellipse at 6% 79%, #0d596c 0 14%, transparent 41%),
+    radial-gradient(ellipse at 6% 79%, #117890 0 18%, transparent 50%),
     radial-gradient(ellipse at 27% 57%, #92263a 0 20%, transparent 49%),
     radial-gradient(ellipse at 55% 36%, #711158 0 19%, transparent 48%),
     radial-gradient(ellipse at 78% 49%, #69125d 0 18%, transparent 48%),
-    radial-gradient(ellipse at 97% 50%, #46548a 0 18%, transparent 44%),
-    linear-gradient(135deg, #101827 0%, #29163b 31%, #701353 56%, #4a1a57 75%, #21152f 100%) !important;
+    radial-gradient(ellipse at 91% 50%, #5369ad 0 25%, transparent 53%),
+    linear-gradient(135deg, #102033 0%, #29163b 29%, #701353 54%, #4d286d 76%, #202044 100%) !important;
   filter: blur(31px) saturate(1.08) brightness(.84);
   background-size: 155% 175%;
   animation: rumag-colour-waves 8s ease-in-out infinite;
@@ -595,12 +595,12 @@ body {
   z-index: 0 !important;
   inset: -46% !important;
   background:
-    radial-gradient(ellipse at 6% 79%, #0d596c 0 14%, transparent 41%),
+    radial-gradient(ellipse at 6% 79%, #117890 0 18%, transparent 50%),
     radial-gradient(ellipse at 27% 57%, #92263a 0 20%, transparent 49%),
     radial-gradient(ellipse at 55% 36%, #711158 0 19%, transparent 48%),
     radial-gradient(ellipse at 78% 49%, #69125d 0 18%, transparent 48%),
-    radial-gradient(ellipse at 97% 50%, #46548a 0 18%, transparent 44%),
-    linear-gradient(135deg, #101827 0%, #29163b 31%, #701353 56%, #4a1a57 75%, #21152f 100%) !important;
+    radial-gradient(ellipse at 91% 50%, #5369ad 0 25%, transparent 53%),
+    linear-gradient(135deg, #102033 0%, #29163b 29%, #701353 54%, #4d286d 76%, #202044 100%) !important;
   filter: blur(31px) saturate(1.08) brightness(.84) !important;
   background-size: 155% 175% !important;
   animation: rumag-colour-waves 8s ease-in-out infinite;
