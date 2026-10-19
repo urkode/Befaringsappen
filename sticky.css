@@ -5,13 +5,15 @@ body {
   height: 100%;
   overflow: hidden;
   overscroll-behavior: none;
-  background: #24143a;
+  background-color: #24143a;
+  color-scheme: dark;
 }
 
 body {
   position: fixed;
   inset: 0;
-  background:
+  background-color: #24143a;
+  background-image:
     radial-gradient(ellipse at 8% 82%, #07535c 0%, transparent 49%),
     radial-gradient(ellipse at 87% 27%, #652a28 0%, transparent 50%),
     linear-gradient(145deg, #07191d 0%, #1c1230 43%, #360f35 70%, #1f1828 100%);
@@ -22,6 +24,7 @@ body {
   min-height: 100dvh;
   overflow: hidden;
   overscroll-behavior: none;
+  background-color: #24143a;
 }
 
 /* Leave the Dynamic Island area as part of the RUMAG background, not as empty space. */
@@ -34,6 +37,7 @@ body {
     radial-gradient(ellipse at 22% 18%, #2f2052 0%, transparent 54%),
     linear-gradient(145deg, #07191d 0%, #1c1230 43%, #360f35 70%, #1f1828 100%) !important;
   background-size: 150% 150% !important;
+  background-color: #24143a !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
 }
 
