@@ -115,10 +115,10 @@ body {
   display: grid;
   place-items: center;
   padding: 28px;
-  background: #100d1b38;
-  /* Blur the page behind the transparent chooser, including during its fade animation. */
-  backdrop-filter: blur(15px) saturate(.9) brightness(.72);
-  -webkit-backdrop-filter: blur(15px) saturate(.9) brightness(.72);
+  /* Blur only: keep the original RUMAG colours unchanged at every edge. */
+  background: rgb(0 0 0 / .001);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   animation: source-dialog-in .18s ease-out both;
 }
 
