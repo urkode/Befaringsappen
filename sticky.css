@@ -91,7 +91,7 @@ body {
   background: #00000026;
   backdrop-filter: blur(5px) saturate(1.1);
   -webkit-backdrop-filter: blur(5px) saturate(1.1);
-  animation: source-dialog-in .32s ease-out both;
+  animation: source-dialog-in .18s ease-out both;
 }
 
 .image-source-card {
@@ -103,7 +103,7 @@ body {
   backdrop-filter: blur(22px) saturate(1.2);
   -webkit-backdrop-filter: blur(22px) saturate(1.2);
   box-shadow: 0 22px 56px #000a;
-  animation: source-card-in .52s ease-out both;
+  animation: source-card-in .34s ease-out both;
 }
 
 .source-choice {
