@@ -96,7 +96,7 @@ function loadBlobAsDataUrl(blob) {
   });
 }
 
-async function reopenSketch(sketch) {
+async function prepareSketchForEditor(sketch) {
   const state = sketch.editorState || {
     photoData: await loadBlobAsDataUrl(sketch.blob),
     width: 0,
@@ -105,21 +105,46 @@ async function reopenSketch(sketch) {
     erasedRegions: [],
     text: []
   };
-  const source = new Image();
-  source.onload = () => {
-    imageData = { width: state.width || source.naturalWidth, height: state.height || source.naturalHeight, src: source };
-    setupEditor();
-    strokes = (state.strokes || []).map(stroke => ({ ...stroke, points: stroke.points.map(point => ({ ...point })) }));
-    erasedRegions = (state.erasedRegions || []).map(region => ({ ...region }));
-    conversionSnapshot = null;
-    requestAnimationFrame(() => {
-      resizeLayers();
-      (state.text || []).forEach(addRestoredText);
-      render();
-    });
-    finishedBlob = sketch.blob;
-  };
-  source.src = state.photoData;
+  const source = await new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = reject;
+    image.src = state.photoData;
+  });
+  return { state, source };
+}
+
+function openPreparedSketch(sketch, prepared) {
+  const { state, source } = prepared;
+  imageData = { width: state.width || source.naturalWidth, height: state.height || source.naturalHeight, src: source };
+  setupEditor();
+  strokes = (state.strokes || []).map(stroke => ({ ...stroke, points: stroke.points.map(point => ({ ...point })) }));
+  erasedRegions = (state.erasedRegions || []).map(region => ({ ...region }));
+  conversionSnapshot = null;
+  requestAnimationFrame(() => {
+    resizeLayers();
+    (state.text || []).forEach(addRestoredText);
+    render();
+  });
+  finishedBlob = sketch.blob;
+}
+
+async function smoothlyOpenSketch(card, sketch) {
+  if (card.classList.contains('is-opening')) return;
+  editingSketchId = sketch.id;
+  const prepared = prepareSketchForEditor(sketch);
+  card.classList.add('is-opening');
+  try {
+    const [ready] = await Promise.all([
+      prepared,
+      new Promise(resolve => setTimeout(resolve, 340))
+    ]);
+    openPreparedSketch(sketch, ready);
+  } catch (_) {
+    card.classList.remove('is-opening');
+    editingSketchId = null;
+    toast('Kunne ikke åpne skissen igjen.');
+  }
 }
 
 function renderGallery() {
@@ -142,9 +167,7 @@ function renderGallery() {
     preview.append(image);
     preview.onclick = event => {
       if (event.target.closest('.sketch-remove')) return;
-      editingSketchId = sketch.id;
-      card.classList.add('is-opening');
-      setTimeout(() => reopenSketch(sketch), 180);
+      smoothlyOpenSketch(card, sketch);
     };
 
     const remove = document.createElement('button');
