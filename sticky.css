@@ -245,12 +245,37 @@ body {
   padding: calc(18px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom)) !important;
   gap: 14px;
   text-align: left !important;
-  animation: none !important;
+  animation: rumag-base-shift 9s ease-in-out infinite alternate !important;
 }
 
 .finish-view::before {
-  animation: none !important;
-  transform: scale(1.22) translate3d(-5%, 3%, 0) !important;
+  animation: rumag-colour-drift 7s cubic-bezier(.55, .05, .2, .98) infinite alternate !important;
+  transform: none !important;
+}
+
+.finish-view::after {
+  z-index: 2 !important;
+  background: url("rumag-r-hvit.svg") center 50% / min(55vw, 300px) auto no-repeat !important;
+  opacity: .15 !important;
+}
+
+.finish-view .finish-edge-tint { z-index: 1 !important; }
+
+.finish-studios {
+  position: absolute !important;
+  z-index: 3 !important;
+  top: calc(50% + min(43.6vw, 238px) + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff45;
+  font-family: ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
+  font-size: clamp(1rem, 4.4vw, 1.3rem);
+  font-weight: 850;
+  letter-spacing: .16em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px #0005;
+  pointer-events: none;
 }
 
 .finish-view .finish-brand,
@@ -263,7 +288,7 @@ body {
 
 .finish-gallery-shell {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
@@ -281,6 +306,31 @@ body {
   gap: 14px 12px;
   padding-bottom: 8px;
 }
+
+.finish-title-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 2px 0 12px;
+}
+
+.project-title {
+  display: block;
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid #ffffff38;
+  border-radius: 13px;
+  outline: none;
+  background: #ffffff14;
+  color: #fff;
+  font: 800 .94rem/1 system-ui, sans-serif;
+  backdrop-filter: blur(14px) saturate(1.14);
+  -webkit-backdrop-filter: blur(14px) saturate(1.14);
+}
+
+.project-title::placeholder { color: #ffffff8c; }
+.project-title:focus { border-color: #ffffff84; background: #ffffff1d; }
 
 .sketch-card { min-width: 0; }
 
@@ -341,9 +391,30 @@ body {
 .sketch-name::placeholder { color: #ffffff8a; }
 .sketch-name:focus { border-color: #ffffff8a; background: #ffffff20; }
 
+.sketch-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  aspect-ratio: .78;
+  padding: 12px;
+  border: 1px solid #ffffff2e;
+  border-radius: 17px;
+  background: #ffffff0b;
+  color: #ffffffa8;
+  box-shadow: inset 0 1px 0 #ffffff12, 0 12px 28px #0003;
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+}
+
+.sketch-add span { font: 300 2rem/1 system-ui, sans-serif; }
+.sketch-add small { margin-top: 8px; font: 750 .72rem/1 system-ui, sans-serif; letter-spacing: .02em; }
+.sketch-add:active { transform: scale(.97); background: #ffffff18; }
+
 .finish-view .finish-actions {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   display: grid !important;
   grid-template-columns: 1fr 1fr;
   flex: 0 0 auto;
@@ -367,6 +438,7 @@ body {
 }
 
 .finish-view .finish-actions .save-button { color: #ffffffb8; }
+.finish-view .finish-actions .share-button { color: #fff !important; }
 
 @keyframes source-dialog-in {
   from { opacity: 0; }

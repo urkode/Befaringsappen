@@ -1,7 +1,12 @@
 /* Persistent, on-device gallery for completed sketches. */
 const galleryDatabase = 'befaringsskisse-gallery';
 const galleryStore = 'sketches';
+const projectTitleStorageKey = 'befaringsskisse-project-title';
 let savedSketches = [];
+
+function projectTitle() {
+  return (localStorage.getItem(projectTitleStorageKey) || '').trim();
+}
 
 function openGalleryDatabase() {
   return new Promise((resolve, reject) => {
@@ -31,7 +36,8 @@ async function galleryRequest(mode, action) {
 function sketchFileName(sketch) {
   const rawName = (sketch.name || 'skisse').trim().replace(/[\\/:*?"<>|]+/g, '-');
   const withoutExtension = rawName.replace(/\.(jpe?g)$/i, '') || 'skisse';
-  return `${withoutExtension}.jpg`;
+  const prefix = projectTitle().replace(/[\\/:*?"<>|]+/g, '-').replace(/\.(jpe?g)$/i, '');
+  return `${prefix ? `${prefix}_` : ''}${withoutExtension}.jpg`;
 }
 
 async function saveSketchRecord(sketch) {
@@ -69,6 +75,10 @@ function renderGallery() {
       if (!confirm('Er du sikker på at du vil slette denne skissen?')) return;
       await removeSketchRecord(sketch.id);
       savedSketches = savedSketches.filter(item => item.id !== sketch.id);
+      if (!savedSketches.length) {
+        show('startView');
+        return;
+      }
       renderGallery();
     };
     preview.append(remove);
@@ -77,7 +87,7 @@ function renderGallery() {
     name.className = 'sketch-name';
     name.type = 'text';
     name.value = sketch.name || '';
-    name.placeholder = 'Filnavn';
+    name.placeholder = 'Bildebeskrivelse...';
     name.autocomplete = 'off';
     name.setAttribute('aria-label', 'Filnavn for skissen');
     let nameTimer;
@@ -90,6 +100,17 @@ function renderGallery() {
     card.append(preview, name);
     grid.append(card);
   });
+
+  const addCard = document.createElement('button');
+  addCard.type = 'button';
+  addCard.className = 'sketch-add';
+  addCard.setAttribute('aria-label', 'Legg til ny skisse');
+  addCard.innerHTML = '<span>+</span><small>Ny skisse</small>';
+  addCard.onclick = () => {
+    show('startView');
+    $('#openImageSource').click();
+  };
+  grid.append(addCard);
 }
 
 async function loadSavedSketches() {
@@ -105,7 +126,7 @@ async function loadSavedSketches() {
 async function addFinishedSketch(blob) {
   const sketch = {
     id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
-    name: 'skisse',
+    name: '',
     blob,
     createdAt: Date.now()
   };
@@ -145,4 +166,9 @@ $('#backToStart').onclick = async () => {
 
 $('#shareImage').onclick = shareSavedSketches;
 $('#downloadImage').onclick = () => {};
+const projectTitleInput = $('#projectTitle');
+projectTitleInput.value = projectTitle();
+projectTitleInput.addEventListener('input', () => {
+  localStorage.setItem(projectTitleStorageKey, projectTitleInput.value);
+});
 loadSavedSketches();
