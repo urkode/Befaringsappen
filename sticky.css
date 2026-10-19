@@ -23,6 +23,14 @@ body {
 /* Leave the Dynamic Island area as part of the RUMAG background, not as empty space. */
 .start-view {
   padding-bottom: calc(76px + env(safe-area-inset-bottom)) !important;
+  background:
+    radial-gradient(ellipse at 8% 82%, #07535c 0%, transparent 49%),
+    radial-gradient(ellipse at 87% 27%, #652a28 0%, transparent 50%),
+    radial-gradient(ellipse at 78% 76%, #55124e 0%, transparent 53%),
+    radial-gradient(ellipse at 22% 18%, #2f2052 0%, transparent 54%),
+    linear-gradient(145deg, #07191d 0%, #1c1230 43%, #360f35 70%, #1f1828 100%) !important;
+  background-size: 150% 150% !important;
+  animation: rumag-base-shift 9s ease-in-out infinite alternate;
 }
 
 .start-view::after {
@@ -33,24 +41,31 @@ body {
 .start-view::before {
   inset: -46% !important;
   background:
-    radial-gradient(ellipse at 16% 77%, #00d8e9 0 10%, transparent 35%),
-    radial-gradient(ellipse at 83% 25%, #ff932f 0 11%, transparent 37%),
-    radial-gradient(ellipse at 79% 69%, #ed168e 0 16%, transparent 42%),
-    radial-gradient(ellipse at 26% 20%, #743fe1 0 18%, transparent 45%),
-    radial-gradient(ellipse at 53% 50%, #b0149b 0 11%, transparent 43%),
-    linear-gradient(135deg, #00a8be 0%, #33205f 26%, #a21284 55%, #e14927 77%, #5d1c76 100%) !important;
-  filter: blur(25px) saturate(1.35) !important;
-  animation: rumag-colour-drift 10s cubic-bezier(.55, .05, .2, .98) infinite alternate;
+    radial-gradient(ellipse at 16% 77%, #08717a 0 11%, transparent 41%),
+    radial-gradient(ellipse at 83% 25%, #8a3a27 0 12%, transparent 43%),
+    radial-gradient(ellipse at 79% 69%, #7d176b 0 16%, transparent 48%),
+    radial-gradient(ellipse at 26% 20%, #493088 0 18%, transparent 49%),
+    radial-gradient(ellipse at 53% 50%, #65125a 0 13%, transparent 47%),
+    linear-gradient(135deg, #07525d 0%, #2b1d58 27%, #68145b 55%, #913723 77%, #3a205b 100%) !important;
+  filter: blur(31px) saturate(1.12) brightness(.76) !important;
+  animation: rumag-colour-drift 7s cubic-bezier(.55, .05, .2, .98) infinite alternate;
   will-change: transform;
 }
 
 @keyframes rumag-colour-drift {
-  0% { transform: scale(1.12) translate3d(-12%, -9%, 0) rotate(-9deg); }
-  38% { transform: scale(1.25) translate3d(9%, -3%, 0) rotate(5deg); }
-  70% { transform: scale(1.18) translate3d(4%, 12%, 0) rotate(11deg); }
-  100% { transform: scale(1.27) translate3d(-8%, 8%, 0) rotate(-5deg); }
+  0% { transform: scale(1.14) translate3d(-17%, -14%, 0) rotate(-12deg); }
+  35% { transform: scale(1.3) translate3d(14%, -7%, 0) rotate(8deg); }
+  68% { transform: scale(1.2) translate3d(8%, 16%, 0) rotate(14deg); }
+  100% { transform: scale(1.32) translate3d(-14%, 11%, 0) rotate(-9deg); }
+}
+
+@keyframes rumag-base-shift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 92% 55%; }
+  100% { background-position: 28% 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .start-view,
   .start-view::before { animation: none; }
 }
