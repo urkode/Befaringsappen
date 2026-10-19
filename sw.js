@@ -1,4 +1,4 @@
-const cache='befaringsskisse-v72';
+const cache='befaringsskisse-v73';
 const assets=['./','./index.html','./style.css','./fix.css','./editor.css','./polish.css','./finish.css','./icons.css','./brand.css','./sticky.css','./rumag-logo-hvit.svg','./rumag-r-hvit.svg','./app.js','./pdf-export.js','./finish.js','./editor-flow.js','./finish-gallery.js','./manifest.webmanifest','./app-icon-rstudios.svg','./apple-touch-icon-v5.png','./app-icon-192-v5.png','./app-icon-512-v5.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(cache).then(store=>store.addAll(assets)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==cache).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
