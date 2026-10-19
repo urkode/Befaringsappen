@@ -5,20 +5,19 @@ body {
   height: 100%;
   overflow: hidden;
   overscroll-behavior: none;
-  background-color: #30305e;
+  background-color: #2a173d;
   color-scheme: dark;
 }
 
 body {
   position: fixed;
   inset: 0;
-  background-color: #30305e;
+  background-color: #2a173d;
   background-image:
-    radial-gradient(ellipse at 43% 73%, #257fa4 0%, transparent 47%),
-    radial-gradient(ellipse at 59% 43%, #8c263e 0%, transparent 48%),
-    radial-gradient(ellipse at 53% 54%, #741251 0%, transparent 45%),
-    radial-gradient(ellipse at 76% 70%, #30305e 0%, transparent 48%),
-    linear-gradient(135deg, #101421 0%, #29163d 38%, #54104e 66%, #252850 100%);
+    radial-gradient(ellipse 48% 36% at 37% 51%, #257fa4 0%, #257fa4d6 23%, transparent 72%),
+    radial-gradient(ellipse 48% 36% at 63% 49%, #8c263e 0%, #8c263ed6 23%, transparent 72%),
+    radial-gradient(ellipse 43% 31% at 51% 51%, #741251 0%, #741251dc 25%, transparent 75%),
+    linear-gradient(to bottom, #2a173d 0%, #2a173d 15%, #471a50 37%, #5a1c5b 50%, #471a50 63%, #2a173d 85%, #2a173d 100%);
 }
 
 #app {
@@ -28,7 +27,7 @@ body {
   min-height: calc(100dvh + env(safe-area-inset-top) + env(safe-area-inset-bottom));
   overflow: hidden;
   overscroll-behavior: none;
-  background-color: #30305e;
+  background-color: #2a173d;
 }
 
 /* Leave the Dynamic Island area as part of the RUMAG background, not as empty space. */
@@ -37,13 +36,12 @@ body {
   min-height: 100% !important;
   padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
   background:
-    radial-gradient(ellipse at 43% 73%, #257fa4 0%, transparent 51%),
-    radial-gradient(ellipse at 59% 43%, #8c263e 0%, transparent 52%),
-    radial-gradient(ellipse at 53% 54%, #741251 0%, transparent 49%),
-    radial-gradient(ellipse at 76% 70%, #30305e 0%, transparent 51%),
-    linear-gradient(135deg, #101421 0%, #29163d 38%, #54104e 66%, #252850 100%) !important;
+    radial-gradient(ellipse 48% 36% at 37% 51%, #257fa4 0%, #257fa4d6 23%, transparent 72%),
+    radial-gradient(ellipse 48% 36% at 63% 49%, #8c263e 0%, #8c263ed6 23%, transparent 72%),
+    radial-gradient(ellipse 43% 31% at 51% 51%, #741251 0%, #741251dc 25%, transparent 75%),
+    linear-gradient(to bottom, #2a173d 0%, #2a173d 15%, #471a50 37%, #5a1c5b 50%, #471a50 63%, #2a173d 85%, #2a173d 100%) !important;
   background-size: 150% 150% !important;
-  background-color: #30305e !important;
+  background-color: #2a173d !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
 }
 .start-view::after {
@@ -59,8 +57,8 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(to bottom, #30305e 0%, #30305e 8%, #30305ed9 15%, #30305e85 24%, #30305e00 37%),
-    linear-gradient(to top, #30305e 0%, #30305e 8%, #30305ed9 15%, #30305e85 25%, #30305e00 38%);
+    linear-gradient(to bottom, #2a173d 0%, #2a173d 8%, #2a173dd9 15%, #2a173d85 24%, #2a173d00 37%),
+    linear-gradient(to top, #2a173d 0%, #2a173d 8%, #2a173dd9 15%, #2a173d85 25%, #2a173d00 38%);
 }
 
 /* A few small stars appear independently, then fade away again. */
@@ -212,11 +210,10 @@ body {
   isolation: isolate;
   overflow: hidden !important;
   background:
-    radial-gradient(ellipse at 43% 73%, #257fa4 0%, transparent 51%),
-    radial-gradient(ellipse at 59% 43%, #8c263e 0%, transparent 52%),
-    radial-gradient(ellipse at 53% 54%, #741251 0%, transparent 49%),
-    radial-gradient(ellipse at 76% 70%, #30305e 0%, transparent 51%),
-    linear-gradient(135deg, #101421 0%, #29163d 38%, #54104e 66%, #252850 100%) !important;
+    radial-gradient(ellipse 48% 36% at 37% 51%, #257fa4 0%, #257fa4d6 23%, transparent 72%),
+    radial-gradient(ellipse 48% 36% at 63% 49%, #8c263e 0%, #8c263ed6 23%, transparent 72%),
+    radial-gradient(ellipse 43% 31% at 51% 51%, #741251 0%, #741251dc 25%, transparent 75%),
+    linear-gradient(to bottom, #2a173d 0%, #2a173d 15%, #471a50 37%, #5a1c5b 50%, #471a50 63%, #2a173d 85%, #2a173d 100%) !important;
   background-size: 150% 150% !important;
   animation: rumag-base-shift 9s ease-in-out infinite alternate;
 }
@@ -226,14 +223,13 @@ body {
   content: "";
   position: absolute;
   z-index: 0 !important;
-  inset: -22%;
+  inset: -8%;
   background:
-    radial-gradient(ellipse at 43% 73%, #257fa4 0 24%, transparent 53%),
-    radial-gradient(ellipse at 59% 43%, #8c263e 0 25%, transparent 53%),
-    radial-gradient(ellipse at 53% 54%, #741251 0 23%, transparent 51%),
-    radial-gradient(ellipse at 76% 70%, #30305e 0 25%, transparent 54%),
-    linear-gradient(135deg, #101421 0%, #29163d 38%, #54104e 66%, #252850 100%) !important;
-  filter: blur(31px) saturate(1.2) brightness(.78);
+    radial-gradient(ellipse 48% 36% at 37% 51%, #257fa4 0 25%, transparent 70%),
+    radial-gradient(ellipse 48% 36% at 63% 49%, #8c263e 0 25%, transparent 70%),
+    radial-gradient(ellipse 43% 31% at 51% 51%, #741251 0 24%, transparent 73%),
+    linear-gradient(to bottom, #2a173d 0%, #2a173d 15%, #471a50 37%, #5a1c5b 50%, #471a50 63%, #2a173d 85%, #2a173d 100%) !important;
+  filter: blur(28px) saturate(1.15) brightness(.82);
   background-size: 155% 175%;
   animation: rumag-colour-waves 8s ease-in-out infinite;
   will-change: transform;
@@ -243,8 +239,8 @@ body {
   position: relative;
   z-index: 1;
   background:
-    linear-gradient(to bottom, #30305e 0%, #30305e 8%, #30305ed9 15%, #30305e85 24%, #30305e00 37%),
-    linear-gradient(to top, #30305e 0%, #30305e 8%, #30305ed9 15%, #30305e85 25%, #30305e00 38%) !important;
+    linear-gradient(to bottom, #2a173d 0%, #2a173d 8%, #2a173dd9 15%, #2a173d85 24%, #2a173d00 37%),
+    linear-gradient(to top, #2a173d 0%, #2a173d 8%, #2a173dd9 15%, #2a173d85 25%, #2a173d00 38%) !important;
 }
 
 .editor-view .floating-button,
@@ -330,8 +326,8 @@ body {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(to bottom, #30305e 0%, #30305e 8%, #30305ed9 15%, #30305e85 24%, #30305e00 37%),
-    linear-gradient(to top, #30305e 0%, #30305e 8%, #30305ed9 15%, #30305e85 25%, #30305e00 38%);
+    linear-gradient(to bottom, #2a173d 0%, #2a173d 8%, #2a173dd9 15%, #2a173d85 24%, #2a173d00 37%),
+    linear-gradient(to top, #2a173d 0%, #2a173d 8%, #2a173dd9 15%, #2a173d85 25%, #2a173d00 38%);
 }
 
 .finish-view > :not(.finish-edge-tint) {
@@ -592,25 +588,24 @@ body {
 /* A slow, restrained colour drift gives the start screen life without moving controls. */
 .start-view::before {
   z-index: 0 !important;
-  inset: -22% !important;
+  inset: -8% !important;
   background:
-    radial-gradient(ellipse at 43% 73%, #257fa4 0 24%, transparent 53%),
-    radial-gradient(ellipse at 59% 43%, #8c263e 0 25%, transparent 53%),
-    radial-gradient(ellipse at 53% 54%, #741251 0 23%, transparent 51%),
-    radial-gradient(ellipse at 76% 70%, #30305e 0 25%, transparent 54%),
-    linear-gradient(135deg, #101421 0%, #29163d 38%, #54104e 66%, #252850 100%) !important;
-  filter: blur(31px) saturate(1.2) brightness(.78) !important;
+    radial-gradient(ellipse 48% 36% at 37% 51%, #257fa4 0 25%, transparent 70%),
+    radial-gradient(ellipse 48% 36% at 63% 49%, #8c263e 0 25%, transparent 70%),
+    radial-gradient(ellipse 43% 31% at 51% 51%, #741251 0 24%, transparent 73%),
+    linear-gradient(to bottom, #2a173d 0%, #2a173d 15%, #471a50 37%, #5a1c5b 50%, #471a50 63%, #2a173d 85%, #2a173d 100%) !important;
+  filter: blur(28px) saturate(1.15) brightness(.82) !important;
   background-size: 155% 175% !important;
   animation: rumag-colour-waves 8s ease-in-out infinite;
   will-change: transform;
 }
 
 @keyframes rumag-colour-waves {
-  0% { transform: scale(1.18) translate3d(-9%, -9%, 0); background-position: 0% 8%; }
-  27% { transform: scale(1.27) translate3d(8%, -5%, 0); background-position: 78% 18%; }
-  54% { transform: scale(1.21) translate3d(6%, 9%, 0); background-position: 44% 82%; }
-  78% { transform: scale(1.28) translate3d(-8%, 6%, 0); background-position: 91% 58%; }
-  100% { transform: scale(1.18) translate3d(-9%, -9%, 0); background-position: 0% 8%; }
+  0% { transform: scale(1.06) translate3d(-2%, -2%, 0); background-position: 42% 46%; }
+  27% { transform: scale(1.1) translate3d(2%, -1%, 0); background-position: 56% 48%; }
+  54% { transform: scale(1.08) translate3d(1%, 2%, 0); background-position: 49% 55%; }
+  78% { transform: scale(1.1) translate3d(-2%, 1%, 0); background-position: 54% 51%; }
+  100% { transform: scale(1.06) translate3d(-2%, -2%, 0); background-position: 42% 46%; }
 }
 
 @keyframes rumag-base-shift {
