@@ -47,12 +47,13 @@ body {
 
 .start-view::after {
   background-position: center 50% !important;
+  z-index: 1 !important;
 }
 
 /* The whole start screen is the upload trigger; no visible button is needed. */
 .start-view .start-actions {
   position: absolute !important;
-  z-index: 2 !important;
+  z-index: 3 !important;
   inset: 0;
   display: block !important;
   width: auto !important;
@@ -77,7 +78,7 @@ body {
 }
 
 .start-view .app-version {
-  z-index: 3 !important;
+  z-index: 4 !important;
 }
 
 .image-source-dialog {
@@ -87,9 +88,10 @@ body {
   display: grid;
   place-items: center;
   padding: 28px;
-  background: #05050a66;
-  backdrop-filter: blur(9px);
-  -webkit-backdrop-filter: blur(9px);
+  background: #00000026;
+  backdrop-filter: blur(5px) saturate(1.1);
+  -webkit-backdrop-filter: blur(5px) saturate(1.1);
+  animation: source-dialog-in .22s ease-out both;
 }
 
 .image-source-card {
@@ -97,12 +99,14 @@ body {
   overflow: hidden;
   border: 1px solid #ffffff3d;
   border-radius: 24px;
-  background: #11111ae8;
+  background: #ffffff14;
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
   box-shadow: 0 22px 56px #000a;
+  animation: source-card-in .34s cubic-bezier(.2, .9, .25, 1.2) both;
 }
 
-.source-choice,
-.source-cancel {
+.source-choice {
   display: block;
   width: 100%;
   min-height: 62px;
@@ -117,14 +121,19 @@ body {
   border-top: 1px solid #ffffff20;
 }
 
-.source-cancel {
-  margin-top: 8px;
-  border-top: 1px solid #ffffff20;
-  color: #ffffff9e;
+@keyframes source-dialog-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes source-card-in {
+  from { opacity: 0; transform: translateY(18px) scale(.93); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* A slow, restrained colour drift gives the start screen life without moving controls. */
 .start-view::before {
+  z-index: 0 !important;
   inset: -46% !important;
   background:
     radial-gradient(ellipse at 16% 77%, #08717a 0 11%, transparent 41%),
@@ -133,7 +142,7 @@ body {
     radial-gradient(ellipse at 26% 20%, #493088 0 18%, transparent 49%),
     radial-gradient(ellipse at 53% 50%, #65125a 0 13%, transparent 47%),
     linear-gradient(135deg, #07525d 0%, #2b1d58 27%, #68145b 55%, #913723 77%, #3a205b 100%) !important;
-  filter: blur(31px) saturate(1.12) brightness(.76) !important;
+  filter: blur(31px) saturate(1.22) brightness(.8) !important;
   animation: rumag-colour-drift 7s cubic-bezier(.55, .05, .2, .98) infinite alternate;
   will-change: transform;
 }
@@ -153,5 +162,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .start-view,
-  .start-view::before { animation: none; }
+  .start-view::before,
+  .image-source-dialog,
+  .image-source-card { animation: none; }
 }
