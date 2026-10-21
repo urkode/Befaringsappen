@@ -530,6 +530,14 @@ body {
   box-shadow: none !important;
 }
 
+/* Text mode shows only the colour choices, never the pen thickness choices. */
+.canvas-wrap.text-mode .pen-colors {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+.canvas-wrap.text-mode .pen-widths { display: none; }
+
 /* iOS Safari zooms the whole page when a focused input uses text below 16px. */
 @supports (-webkit-touch-callout: none) {
   .project-title,
