@@ -35,6 +35,9 @@ function pdfBytes(value) {
 function exportEditablePdf() {
   const jpeg = canvasJpegBytes(photo);
   const scale = Math.min(1, 1000 / Math.max(photo.width, photo.height));
+  /* Text sizes are shown in screen pixels in the editor. Convert them back to
+     photo pixels before writing the PDF, just as the image preview does. */
+  const textSourceScale = photo.width / Math.max(1, textLayer.getBoundingClientRect().width);
   const pageWidth = photo.width * scale;
   const pageHeight = photo.height * scale;
   const drawing = [];
@@ -56,9 +59,10 @@ function exportEditablePdf() {
     const value = entry.value.trim();
     if (!value) return;
     const [red, green, blue] = pdfRgb(entry.style.getPropertyValue('--text-color'));
-    const size = (Number(entry.dataset.size) || 20) * scale;
+    const sourceSize = (Number(entry.dataset.size) || 20) * textSourceScale;
+    const size = sourceSize * scale;
     const x = Number(entry.dataset.x) * scale;
-    const y = pageHeight - (Number(entry.dataset.y) + Number(entry.dataset.size || 20)) * scale;
+    const y = pageHeight - (Number(entry.dataset.y) + sourceSize) * scale;
     text.push(`BT /F1 ${pdfNumber(size)} Tf ${pdfNumber(red)} ${pdfNumber(green)} ${pdfNumber(blue)} rg 1 0 0 1 ${pdfNumber(x)} ${pdfNumber(y)} Tm (${pdfText(value)}) Tj ET`);
   });
 
