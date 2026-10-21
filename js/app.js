@@ -36,10 +36,10 @@ function addManualTextBox(){
   input.dataset.y=((layer.height-size)/2)/layer.height*draw.height;
   input.dataset.size=size;
   input.style.width=initialWidth+'px';
-  input.addEventListener('input',()=>{const currentSize=Number(input.dataset.size)||size;input.style.width=Math.max(110,input.value.length*currentSize*.64+28)+'px';});
+  input.addEventListener('input',()=>{const currentSize=Number(input.dataset.size)||size;if(!input.value.trim()){closeEmptyTextEntry(input);return;}input.style.width=Math.max(110,input.value.length*currentSize*.64+28)+'px';});
   input.addEventListener('focus',()=>{activeTextEntry=input;wrap.classList.add('text-mode');});
   input.addEventListener('touchstart',event=>{const touch=[...event.changedTouches].find(item=>item.target===input)||event.changedTouches[0];if(touch){activeTextEntry=input;textHoldTouchId=touch.identifier;}},{passive:true});
-  input.addEventListener('blur',()=>{setTimeout(()=>{if(!input.value.trim()&&document.activeElement!==input){if(activeTextEntry===input)activeTextEntry=null;input.remove();}},0);});
+  input.addEventListener('blur',()=>{setTimeout(()=>{if(!input.value.trim()&&document.activeElement!==input)closeEmptyTextEntry(input);restoreEditorViewport();},0);});
   makeMovable(input);
   textLayer.append(input);
   activeTextEntry=input;
@@ -48,7 +48,7 @@ function addManualTextBox(){
 
 function resizeActiveText(size){
   if(!activeTextEntry?.isConnected)return;
-  const nextSize=Math.max(12,Math.min(160,size));
+  const nextSize=Math.max(16,Math.min(160,size));
   activeTextEntry.dataset.size=nextSize;
   activeTextEntry.style.setProperty('--font-size',nextSize+'px');
   activeTextEntry.style.width=Math.max(48,activeTextEntry.value.length*nextSize*.64+28)+'px';
@@ -75,6 +75,29 @@ document.addEventListener('touchend',event=>{
   if(event.touches.length<2)textScaleState=null;
 },{passive:true});
 
-// Manual text replaces handwriting recognition; no request is sent to an AI service.
-$('#recognizeTool').onclick=()=>{setPen(false);wrap.classList.add('text-mode');addManualTextBox();};
+function restoreEditorViewport(){
+  requestAnimationFrame(()=>window.scrollTo(0,0));
+}
+function closeEmptyTextEntry(input){
+  if(!input?.isConnected)return;
+  if(activeTextEntry===input)activeTextEntry=null;
+  input.remove();
+  wrap.classList.remove('text-mode');
+  restoreEditorViewport();
+}
+
+// Text always starts by choosing its colour. The text field is added only after that choice.
+$('#penTool').onclick=()=>{wrap.classList.remove('text-colour-mode');setPen(!penActive);};
+$('#recognizeTool').onclick=()=>{
+  setPen(false);
+  wrap.classList.toggle('text-colour-mode');
+};
+document.querySelectorAll('.text-color').forEach(button=>button.onclick=()=>{
+  color=button.dataset.color;
+  document.querySelectorAll('.text-color').forEach(item=>item.classList.toggle('selected',item===button));
+  document.querySelectorAll('.color').forEach(item=>item.classList.toggle('selected',item.dataset.color===color));
+  wrap.classList.remove('text-colour-mode');
+  wrap.classList.add('text-mode');
+  addManualTextBox();
+});
 

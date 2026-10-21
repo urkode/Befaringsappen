@@ -165,7 +165,7 @@ body {
   inset: 0;
   display: grid;
   place-items: center;
-  padding: 28px;
+  padding: 27px;
   /* Blur only: keep the original RUMAG colours unchanged at every edge. */
   background: rgb(0 0 0 / .001);
   backdrop-filter: blur(15px);
@@ -191,12 +191,13 @@ body {
 .source-choice {
   display: block;
   width: 100%;
-  min-height: 62px;
+  min-height: 76px;
   padding: 14px 18px;
   border: 0;
   background: transparent;
   color: #fff;
-  font: 800 1rem/1.2 inherit;
+  font: 800 1.05rem/1.2 inherit;
+  text-align: center;
   cursor: pointer;
 }
 
