@@ -1,6 +1,6 @@
 const $=s=>document.querySelector(s),views=['startView','cameraView','editorView','finishView'];
 const photo=$('#photoCanvas'),draw=$('#drawCanvas'),pctx=photo.getContext('2d'),dctx=draw.getContext('2d'),wrap=$('#canvasWrap'),textLayer=$('#textLayer');
-let stream,imageData,strokes=[],currentStroke,color='#ef4444',penThickness=1,penActive=false,finishedBlob,conversionSnapshot=null,erasedRegions=[];
+let stream,imageData,strokes=[],currentStroke,color='#ef4444',penThickness=1.95,penActive=false,finishedBlob,conversionSnapshot=null,erasedRegions=[];
 const finishButton=document.createElement('button');finishButton.id='backToStart';finishButton.className='floating-button finish-button';finishButton.type='button';finishButton.textContent='Ferdig';finishButton.setAttribute('aria-label','Ferdig');wrap.append(finishButton);
 function show(id){views.forEach(v=>$('#'+v).classList.toggle('hidden',v!==id));if(id==='startView')window.resetSketchSession?.();}function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
 async function camera(){try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});$('#camera').srcObject=stream;show('cameraView');}catch{toast('Kamera kunne ikke apnes. Velg et bilde i stedet.');}}function stopCamera(){stream?.getTracks().forEach(t=>t.stop());stream=null;}
@@ -18,4 +18,31 @@ function inkImage(){const c=document.createElement('canvas'),x=c.getContext('2d'
 async function recognize(){if(!strokes.length){toast('Tegn tekst eller tall forst.');return;}toast('AI vurderer markeringene ...');try{const res=await fetch('/.netlify/functions/recognize',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({image:inkImage(),width:draw.width,height:draw.height})});if(!res.ok)throw Error(await res.text());const {items}=await res.json();const fresh=(items||[]).filter(item=>item?.text?.trim()&&item.box&&Number.isFinite(item.box.x0)&&Number.isFinite(item.box.y0)&&Number.isFinite(item.box.x1)&&Number.isFinite(item.box.y1)&&!erasedRegions.some(region=>sameRegion(region,item.box)));if(!fresh.length)throw Error('Ingen ny tekst ble funnet');conversionSnapshot=strokes.map(s=>({...s,points:s.points.map(p=>({...p}))}));fresh.forEach(item=>{addText(item);erasedRegions.push(eraseRegion(item.box));});strokes=strokes.filter(stroke=>!fresh.some(item=>strokeIsTextInk(stroke,item.box)));render();setPen(false);toast('Teksten er klar, og håndskriften er fjernet.');}catch(error){console.error('AI recognition error:',error);const m=String(error.message||'');toast(m.includes('OPENAI_API_KEY')?'API-nokkelen mangler i Netlify.':m.includes('404')||m.includes('not found')?'AI-funksjonen er ikke deployet.':m.includes('quota')||m.includes('billing')?'OpenAI-prosjektet mangler betaling eller kreditt.':'AI-feil: '+m.slice(0,90));}}$('#recognizeTool').onclick=recognize;
 function exportImage(){const c=document.createElement('canvas'),x=c.getContext('2d');c.width=photo.width;c.height=photo.height;x.drawImage(photo,0,0);x.drawImage(draw,0,0);textLayer.querySelectorAll('.text-entry').forEach(el=>{const s=Number(el.dataset.size)||20;x.font=`700 ${s}px system-ui`;x.fillStyle=el.style.getPropertyValue('--text-color')||'#fff';x.fillText(el.value,Number(el.dataset.x),Number(el.dataset.y)+s);});return new Promise(ok=>c.toBlob(ok,'image/jpeg',.94));}$('#backToStart').onclick=async()=>{finishedBlob=await exportImage();show('finishView');};
 function downloadImage(){const a=document.createElement('a');a.href=URL.createObjectURL(finishedBlob);a.download='befaringsskisse.jpg';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}async function shareImage(){const f=new File([finishedBlob],'befaringsskisse.jpg',{type:'image/jpeg'});if(navigator.share&&navigator.canShare?.({files:[f]})){try{await navigator.share({title:'Befaringsskisse',text:'Befaringsskisse',files:[f]});return;}catch(error){if(error?.name==='AbortError')return;}}downloadImage();}$('#shareImage').onclick=shareImage;$('#downloadImage').onclick=downloadImage;if('serviceWorker'in navigator){navigator.serviceWorker.addEventListener('controllerchange',()=>location.reload(),{once:true});navigator.serviceWorker.register('./sw.js').catch(()=>{});}
+
+function addManualTextBox(){
+  const size=Math.max(20,Math.min(38,photo.width/30));
+  const layer=textLayer.getBoundingClientRect();
+  const input=document.createElement('input');
+  input.className='text-entry';
+  input.type='text';
+  input.placeholder='Skriv tekst';
+  input.autocomplete='off';
+  const initialWidth=Math.max(160,size*7);
+  input.style.left=((layer.width-initialWidth)/2)+'px';
+  input.style.top=((layer.height-size)/2)+'px';
+  input.style.setProperty('--font-size',size+'px');
+  input.style.setProperty('--text-color',color);
+  input.dataset.x=((layer.width-initialWidth)/2)/layer.width*draw.width;
+  input.dataset.y=((layer.height-size)/2)/layer.height*draw.height;
+  input.dataset.size=size;
+  input.style.width=initialWidth+'px';
+  input.addEventListener('input',()=>{input.style.width=Math.max(110,input.value.length*size*.64+28)+'px';});
+  input.addEventListener('blur',()=>{if(!input.value.trim())input.remove();});
+  makeMovable(input);
+  textLayer.append(input);
+  input.focus();
+}
+
+// Manual text replaces handwriting recognition; no request is sent to an AI service.
+$('#recognizeTool').onclick=()=>{setPen(false);addManualTextBox();};
 
