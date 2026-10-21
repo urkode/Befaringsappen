@@ -659,27 +659,27 @@ body {
 }
 
 @keyframes blue-pair-orbit {
-  0% { transform: translate(-59%, -53%); }
-  12.5% { transform: translate(-55%, -61%); }
-  25% { transform: translate(-47%, -65%); }
-  37.5% { transform: translate(-39%, -61%); }
-  50% { transform: translate(-35%, -53%); }
-  62.5% { transform: translate(-39%, -45%); }
-  75% { transform: translate(-47%, -41%); }
+  0% { transform: translate(-57%, -50%); }
+  12.5% { transform: translate(-55%, -55%); }
+  25% { transform: translate(-50%, -57%); }
+  37.5% { transform: translate(-45%, -55%); }
+  50% { transform: translate(-43%, -50%); }
+  62.5% { transform: translate(-45%, -45%); }
+  75% { transform: translate(-50%, -43%); }
   87.5% { transform: translate(-55%, -45%); }
-  100% { transform: translate(-59%, -53%); }
+  100% { transform: translate(-57%, -50%); }
 }
 
 @keyframes pink-pair-orbit {
-  0% { transform: translate(-45%, -47%); }
-  12.5% { transform: translate(-41%, -55%); }
-  25% { transform: translate(-33%, -59%); }
-  37.5% { transform: translate(-25%, -55%); }
-  50% { transform: translate(-21%, -47%); }
-  62.5% { transform: translate(-25%, -39%); }
-  75% { transform: translate(-33%, -35%); }
-  87.5% { transform: translate(-41%, -39%); }
-  100% { transform: translate(-45%, -47%); }
+  0% { transform: translate(-43%, -50%); }
+  12.5% { transform: translate(-45%, -45%); }
+  25% { transform: translate(-50%, -43%); }
+  37.5% { transform: translate(-55%, -45%); }
+  50% { transform: translate(-57%, -50%); }
+  62.5% { transform: translate(-55%, -55%); }
+  75% { transform: translate(-50%, -57%); }
+  87.5% { transform: translate(-45%, -55%); }
+  100% { transform: translate(-43%, -50%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
