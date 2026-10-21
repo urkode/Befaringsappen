@@ -192,11 +192,14 @@ body {
   display: block;
   width: 100%;
   min-height: 76px;
-  padding: 14px 18px;
+  padding: 18px;
   border: 0;
   background: transparent;
   color: #fff;
-  font: 800 1.05rem/1.2 inherit;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: normal;
   text-align: center;
   cursor: pointer;
 }
