@@ -335,7 +335,7 @@ body {
 
 .finish-view::after {
   z-index: 2 !important;
-  background: url("rumag-r-hvit.svg") center 50% / min(55vw, 300px) auto no-repeat !important;
+  background: url("../assets/brand/rumag-r-hvit.svg") center 50% / min(55vw, 300px) auto no-repeat !important;
   opacity: .15 !important;
 }
 

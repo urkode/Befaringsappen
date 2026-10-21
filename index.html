@@ -8,18 +8,18 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="R Studios" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-v9.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-v9.png" />
-    <link rel="icon" href="/app-icon-rstudios.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
+    <link rel="icon" href="/assets/icons/app-icon-rstudios.svg" type="image/svg+xml" />
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="fix.css" />
-    <link rel="stylesheet" href="editor.css" />
-    <link rel="stylesheet" href="polish.css" />
-    <link rel="stylesheet" href="finish.css" />
-    <link rel="stylesheet" href="icons.css" />
-    <link rel="stylesheet" href="brand.css" />
-    <link rel="stylesheet" href="sticky.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/fix.css" />
+    <link rel="stylesheet" href="css/editor.css" />
+    <link rel="stylesheet" href="css/polish.css" />
+    <link rel="stylesheet" href="css/finish.css" />
+    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/brand.css" />
+    <link rel="stylesheet" href="css/sticky.css" />
     <title>R Studios</title>
   </head>
   <body>
@@ -40,7 +40,7 @@
             <label for="imageUpload" class="source-choice">Velg bilde</label>
           </div>
         </div>
-        <span class="app-version">v1.8.13</span>
+        <span class="app-version">v1.8.14</span>
             <span class="developer-credit">Ulrik Ruud</span>
       </section>
 
@@ -79,14 +79,14 @@
           <div class="finish-title-wrap"><input id="projectTitle" class="project-title" type="text" placeholder="Sett inn tittel..." autocomplete="off" aria-label="Felles tittel for filnavn" /></div>
           <div id="sketchGrid" class="sketch-grid"></div>
         </div>
-        <div class="finish-brand"><img src="rumag-logo-hvit.svg" alt="RUMAG" /></div>
+        <div class="finish-brand"><img src="assets/brand/rumag-logo-hvit.svg" alt="RUMAG" /></div>
         <div class="finish-icon">✓</div><h1>Skissen er klar</h1><p>Del den med Outlook, Teams eller en annen app – eller lagre den for senere.</p>
         <div class="finish-actions"><button id="shareImage" class="primary-button share-button">Lagre skisse</button><button id="downloadImage" class="secondary-button save-button">Send på mail</button></div>
         <button id="deleteSketch" class="delete-button">Slett skisse</button>
       </section>
     </main>
     <div id="toast" role="status"></div>
-    <script src="app.js"></script><script src="pdf-export.js"></script><script src="finish.js"></script><script src="editor-flow.js"></script><script src="finish-gallery.js"></script>
+    <script src="js/app.js"></script><script src="js/pdf-export.js"></script><script src="js/finish.js"></script><script src="js/editor-flow.js"></script><script src="js/finish-gallery.js"></script>
   </body>
 </html>
 
